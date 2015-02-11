@@ -1,0 +1,98 @@
+
+<div class="row page-header">
+  <div class="col-md-2">
+    <h2> Usuario </h2>
+  </div>
+  <div class="col-md-10" align="right" >
+    <%= link_to 'Editar', edit_administracion_usuario_path(@administracion_usuario), class:"btn btn-default" %> 
+      <%= link_to 'Regresar',  administracion_usuarios_path ,class:"btn btn-default" %>     
+  </div>
+</div>
+
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert"><%= notice %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+
+<div class="panel panel-default">
+<div class="panel-body">
+<div class="row" style="margin: 10px 0px 10px 0px;">
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">UserName</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.username  %></p>
+  </div>
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Cedula</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.cedula  %></p>
+  </div>
+</div>
+
+<div class="row" style="margin: 0px 0px 10px 0px;">
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Nombres</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.nombres  %></p>
+  </div>
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Apellidos</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.apellidos  %></p>
+  </div>
+</div>
+
+<div class="row" style="margin: 0px 0px 10px 0px;">
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Email</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.email  %></p>
+  </div>
+</div>
+
+<div class="row" style="margin: 0px 0px 10px 0px;">
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Telefono</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.telefono  %></p>
+  </div>
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Celular</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.celular  %></p>
+  </div>
+</div>
+
+
+<div class="row" style="margin: 0px 0px 10px 0px;">
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Direccion</h4>
+  </div>
+  <div class="col-md-4">
+    <p  class="list-group-item-text"><%= @administracion_usuario.direccion  %></p>
+  </div>
+</div>
+
+
+<div class="row" style="margin: 0px 0px 10px 0px;">
+  <div class="col-md-2">
+    <h4 class="list-group-item-heading" style="font-weight: bold;">Estado</h4>
+  </div>
+  <div class="col-md-4">
+    <p class="list-group-item-text"><%=if @administracion_usuario.estado then "Activo" else "Inactivo " end  %></p>
+  </div>
+</div>
+  </div>
+
+</div>

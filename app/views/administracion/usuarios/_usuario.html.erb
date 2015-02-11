@@ -1,0 +1,32 @@
+<tr>
+    <td><%= usuario.username %></td>
+	<td><%= usuario.cedula %></td>
+	<td><%= usuario.nombres %></td>
+	<td><%= usuario.apellidos  %></td>
+	<td><%= usuario.email  %></td>
+	<td><%= usuario.celular  %></td>
+    <% if controller.action_name == 'index' %>
+		<td>
+    		<%= link_to  usuario do |link| %>
+    			<span data-toggle="tooltip" data-placement="left" title="" class="glyphicon glyphicon-zoom-in"></span>
+    		<% end %>	
+	    </td>
+    	<td>
+	    	<%= link_to  edit_administracion_usuario_path(usuario) do |link| %>
+    		<span data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-edit"></span>
+	    	<% end %>
+    	</td>
+    	<td>
+	    	<%= link_to  administracion_usuario_permisos_path (usuario) do |link| %>
+    		<span data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-th-large"></span>
+	    	<% end %>
+    	</td>
+
+    	<td>
+	    	<%= link_to  administracion_usuario_password_path (usuario) do |link| %>
+    		<span data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-lock"></span>
+	    	<% end %>
+    	</td>
+	<% end %>
+</tr> 
+ 

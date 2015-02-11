@@ -1,0 +1,61 @@
+<div class="row page-header">
+  <div class="col-md-2">
+    <h2> Usuario </h2>
+  </div>
+  <div class="col-md-10" align="right" >
+    <%= link_to 'Editar', edit_administracion_usuario_path(@administracion_usuario), class:"btn btn-default" %> 
+      <%= link_to 'Regresar',  administracion_usuarios_path ,class:"btn btn-default" %>     
+  </div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row" style="">
+		  <div class="col-md-2">
+		    <h4 class="list-group-item-heading" style="font-weight: bold;">UserName</h4>
+		  </div>
+		  <div class="col-md-2">
+		    <p  class="list-group-item-text"><%= @administracion_usuario.username  %></p>
+		  </div>
+		  <div class="col-md-2">
+		    <h4 class="list-group-item-heading" style="font-weight: bold;">Cedula</h4>
+		  </div>
+		  <div class="col-md-2">
+		    <p  class="list-group-item-text"><%= @administracion_usuario.cedula  %></p>
+		  </div>
+		  <div class="col-md-2">
+		    <h4 class="list-group-item-heading" style="font-weight: bold;">Nombres</h4>
+		  </div>
+		  <div class="col-md-2">
+		    <p  class="list-group-item-text"><%= @administracion_usuario.nombres  %></p>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert"><%= notice %>
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+ 			 <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+<% end %>
+
+<div class="row">
+	<div role="tabpanel">
+	  <ul class="nav nav-tabs" role="tablist">
+	  <% @controladores.each do |c|  %>
+	    <li class="active">
+	   		<a href="#con<%= c.id %>" aria-controls="#con<%= c.id %>" role="tab" data-toggle="tab"><label><%= c.descripcion %></label></a>
+	   	</li>
+	  <% end %>
+	  </ul>
+	  <div class="tab-content">
+	  <% @controladores.each do |c|  %>
+	    <div role="tabpanel" class="tab-pane active well" id="#con<%= c.id %>">
+			<%=	usuario_permiso(c,@administracion_usuario) %>
+	    </div>
+	  <% end %>
+	  </div>
+	</div> 
+</div 

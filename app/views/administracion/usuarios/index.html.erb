@@ -1,0 +1,32 @@
+<h1 class="page-header"> Usuarios </h1>
+<div  class="botonera">
+      <%= link_to new_administracion_usuario_path,  class: " btn btn-default " do %>
+        agregar
+      <% end %>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>UserName</th>
+        <th>Cedula</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Email</th>
+        <th>Celular</th>
+      </tr>
+    </thead>
+   <tbody>
+      <%= render  @usuarios %>
+   </tbody>
+  </table>
+</div>
+  
+<div class="row">
+  <div class="col-md-4">
+    <label><%= page_entries_info @usuarios %></label>
+  </div>
+  <div class="col-md-8" align="right">
+    <%= will_paginate @usuarios, renderer: BootstrapPagination::Rails %> 
+  </div>
+</div>
