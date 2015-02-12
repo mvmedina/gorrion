@@ -4,8 +4,6 @@ class CreateSigespRegions < ActiveRecord::Migration
       t.integer :seq_region , primary_key: true 
       t.string :str_descripcion
       t.string :str_codregion
-
-      t.timestamps
     end
   end
 end

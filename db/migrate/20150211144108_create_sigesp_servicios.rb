@@ -4,7 +4,6 @@ class CreateSigespServicios < ActiveRecord::Migration
       t.integer :seq_servicio
       t.string :str_descripcion
       t.string :str_codservicio
-      t.timestamps
     end
   end
 end

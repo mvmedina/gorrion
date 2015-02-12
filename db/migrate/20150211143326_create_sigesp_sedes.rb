@@ -5,7 +5,6 @@ class CreateSigespSedes < ActiveRecord::Migration
       t.string :str_descripcion
       t.string :str_codsede
       t.integer :int_region
-      t.timestamps
     end
   end
 end
