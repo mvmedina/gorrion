@@ -46,22 +46,26 @@ class Administracion::Usuario < ActiveRecord::Base
 
 
   validates :username , 
-      presence: {message: 'Campo Requerido '},
+      presence: {message: ' Ingrese un user mail '},
       uniqueness: {message: 'ya Registrado', on: :create },
       length: {maximum: 15 , too_long:"%{count} caracteres es el maximo  "}
 
+  validates :email, 
+         presence: {message: 'Ingrese su Email '},
+         format:{ with:/.+@+[a-z]+./ , message: "Formato Invalido"}
 
   validates :cedula, 
-      presence: {message: 'Campo Requerido '},
-      uniqueness: {message: 'Cedula ya Registrada', on: :create },
-      length: {maximum: 15 , too_long:"%{count} caracteres es el maximo  "}
+      presence: {message: 'Ingrese su Cedula '},
+      uniqueness: {message: 'Cedula Registrada', on: :create },
+      length: {maximum: 15 , too_long:"%{count} caracteres es el maximo  "},
+      format: { with: /V-\d/, message: "Formato Invalido"}
 
   validates :nombres,
-      presence: {message: 'Campo Requerido '},
+      presence: {message: 'Ingrese Su Nombre '},
       length: {maximum: 40, too_long:"%{count} caracteres es el maximo  "}
 
   validates :apellidos,
-      presence: {message: 'Campo Requerido '},
+      presence: {message: 'Ingrese Su apellido '},
       length: {maximum: 40, too_long:"%{count} caracteres es el maximo  "}
 
   validates :celular,

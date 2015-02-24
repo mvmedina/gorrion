@@ -6,7 +6,7 @@ class CreateSigespCargos < ActiveRecord::Migration
       t.string :dencar
       t.string :codestpro
       t.string :spg_cuenta
-      t.double :procar
+      t.integer :procar #--
       t.integer :estlibcom
       t.string :formula
 

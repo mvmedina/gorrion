@@ -66,3 +66,4 @@ gem 'devise'
 gem 'cancan'
 
 gem 'pg' 
+
