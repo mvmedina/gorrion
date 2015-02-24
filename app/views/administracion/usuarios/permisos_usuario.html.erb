@@ -4,31 +4,31 @@
   </div>
   <div class="col-md-10" align="right" >
     <%= link_to 'Editar', edit_administracion_usuario_path(@administracion_usuario), class:"btn btn-default" %> 
-      <%= link_to 'Regresar',  administracion_usuarios_path ,class:"btn btn-default" %>     
+      <%= link_to 'Regresar',  administracion_usuarios_path ,class:"btn btn-default" %>
   </div>
 </div>
-
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div class="row" style="">
-		  <div class="col-md-2">
-		    <h4 class="list-group-item-heading" style="font-weight: bold;">UserName</h4>
+		  <div class="col-md-4">
+		    <label class="list-group-item-heading"
+		    	 style="font-weight: bold;">UserName 
+			    <%= @administracion_usuario.username  %>
+		    </label>
 		  </div>
-		  <div class="col-md-2">
-		    <p  class="list-group-item-text"><%= @administracion_usuario.username  %></p>
+		  <div class="col-md-4">
+		    <label class="list-group-item-heading"
+		    	 style="font-weight: bold;">Cedula 
+			    <%= @administracion_usuario.cedula  %>
+		    </label>
 		  </div>
-		  <div class="col-md-2">
-		    <h4 class="list-group-item-heading" style="font-weight: bold;">Cedula</h4>
+		  <div class="col-md-4">
+		    <label class="list-group-item-heading"
+		    	 style="font-weight: bold;">Nombres 
+			    <%= @administracion_usuario.nombres  %>
+		    </label>
 		  </div>
-		  <div class="col-md-2">
-		    <p  class="list-group-item-text"><%= @administracion_usuario.cedula  %></p>
-		  </div>
-		  <div class="col-md-2">
-		    <h4 class="list-group-item-heading" style="font-weight: bold;">Nombres</h4>
-		  </div>
-		  <div class="col-md-2">
-		    <p  class="list-group-item-text"><%= @administracion_usuario.nombres  %></p>
-		  </div>
+
 		</div>
 	</div>
 </div>
@@ -41,21 +41,23 @@
 	</div>
 <% end %>
 
-<div class="row">
-	<div role="tabpanel">
-	  <ul class="nav nav-tabs" role="tablist">
-	  <% @controladores.each do |c|  %>
-	    <li class="active">
-	   		<a href="#con<%= c.id %>" aria-controls="#con<%= c.id %>" role="tab" data-toggle="tab"><label><%= c.descripcion %></label></a>
-	   	</li>
-	  <% end %>
-	  </ul>
-	  <div class="tab-content">
-	  <% @controladores.each do |c|  %>
-	    <div role="tabpanel" class="tab-pane active well" id="#con<%= c.id %>">
-			<%=	usuario_permiso(c,@administracion_usuario) %>
-	    </div>
-	  <% end %>
-	  </div>
-	</div> 
-</div 
+<h3 class="page-header"> Permisos </h3>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <% @controladores.each do |controlador|   %>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="<%= controlador.id%>">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#<%= controlador.id %>c" aria-controls="<%= controlador.id %>c">
+          <%= controlador.descripcion %>
+        </a>
+      </h4>
+    </div>
+    <div id="<%= controlador.id %>c" class="panel-collapse collapse " role="tabpanel" aria-labelledby="<%= controlador.id%>">
+      <div class="panel-body">
+      	<%=  permisos_activos(controlador.permisos,@administracion_usuario)   %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+

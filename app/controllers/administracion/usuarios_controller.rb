@@ -2,9 +2,10 @@ class Administracion::UsuariosController < ApplicationController
   
   #load_and_authorize_resource
 
-  before_action :set_administracion_usuario, 
-             only: [:show, :edit, :update,:destroy, :permisos_usuario,
-                    :add_permiso_usuario, :del_permiso_usuario,:password_edit, :password_save]
+  before_action :set_administracion_usuario, only: [:show, :edit, :update,:destroy,
+                :permisos_usuario,:add_permiso_usuario, :del_permiso_usuario,
+                :permisos_usuario_edit,:password_edit, :password_save]
+
 
   #before_action :authenticate_usuario!
 
@@ -30,8 +31,6 @@ class Administracion::UsuariosController < ApplicationController
     @administracion_usuario.password_confirmation = @administracion_usuario.password
   end
 
-
-
   def password_edit
 
   end 
@@ -39,8 +38,9 @@ class Administracion::UsuariosController < ApplicationController
   def password_save
       respond_to do |format|
       if @administracion_usuario.update(usuario_params_change_password)
+        flash[:notice] = "Usuario Contraseña Actualizada  ."
         format.html { redirect_to @administracion_usuario, notice: 'Usuario Contraseña Actualizada  .' }
-        format.json { head :no_content }
+        format.json { render action: 'show', status: :created, location: @administracion_usuario}
       else
         format.html { render action: 'password_edit' }
         format.json { render json: @administracion_usuario.errors, status: :unprocessable_entity }
@@ -56,10 +56,12 @@ class Administracion::UsuariosController < ApplicationController
     @administracion_usuario = Administracion::Usuario.new(usuario_params)
     @administracion_usuario.password = '12345678'
     @administracion_usuario.password_confirmation= '12345678'
+    @administracion_usuario.username = @administracion_usuario.username.upcase 
     respond_to do |format|
       if @administracion_usuario.save
-        format.html { redirect_to @administracion_usuario, notice: 'Usuario fue correctamente creado.' }
-        format.json { render action: 'show', status: :created, location: @administracion_usuario }
+        flash[:notice] = "Usuario Almacenado Correctamente "
+        format.html { redirect_to @administracion_usuario }
+        format.json { render action: 'show', status: :created, location: @administracion_usuario}
       else
         format.html { render action: 'new' }
         format.json { render json: @administracion_usuario.errors, status: :unprocessable_entity }
@@ -72,8 +74,9 @@ class Administracion::UsuariosController < ApplicationController
   def update
     respond_to do |format|
       if @administracion_usuario.update(usuario_params_update )
-        format.html { redirect_to @administracion_usuario, notice: 'Usuario fue correctamente actualizado.' }
-        format.json { head :no_content }
+        flash[:notice] = "Usuario fue correctamente actualizado."
+        format.html { redirect_to @administracion_usuario}
+        format.json { render action: 'show', status: :created, location: @administracion_usuario}
       else
         format.html { render action: 'edit' }
         format.json { render json: @administracion_usuario.errors, status: :unprocessable_entity }
@@ -96,6 +99,10 @@ class Administracion::UsuariosController < ApplicationController
     @controladores = Administracion::Controlador.all
   end 
  
+  #Mostrar todo los permisos del usuario 
+  def permisos_usuario_edit
+
+  end 
 
   def add_permiso_usuario
     @permiso = Administracion::Permiso.find(params[:permiso_id])
@@ -105,9 +112,9 @@ class Administracion::UsuariosController < ApplicationController
       @permiso_usuario.usuario = @administracion_usuario
       @permiso_usuario.permiso = @permiso
       @permiso_usuario.save 
-      flash[:notice] = "Permiso Activado "
+      flash[:notice] = "Permiso Activado "+@permiso.descripcion
     else
-      flash[:notice] = "Este Permiso se Encuentra Asigando "
+      flash[:notice] = "Este Permiso se Encuentra Asigando "+@permiso.descripcion
     end 
     respond_to do |format|
       format.html { redirect_to administracion_usuario_permisos_path(@administracion_usuario)}
@@ -123,9 +130,9 @@ class Administracion::UsuariosController < ApplicationController
 
     unless @permiso_usuario.nil?
       @permiso_usuario.destroy
-      flash[:notice] = "Permiso Inactivo"
+      flash[:notice] = "Permiso Inactivo"+@permiso.descripcion
     else
-      flash[:notice] = "Este Permiso No se Encuentra Asigando"
+      flash[:notice] = "Este Permiso No se Encuentra Asigando"+@permiso.descripcion
     end 
 
     respond_to do |format|
@@ -152,14 +159,13 @@ class Administracion::UsuariosController < ApplicationController
     def usuario_params_update
       params.require(:administracion_usuario).permit(:nombres, :apellidos,:email, :direccion, :telefono, :celular)
     end
-
-    def usuario_params_update
-      params.require(:administracion_usuario).permit(:nombres, :apellidos,:email, :direccion, :telefono, :celular)
-    end
-
+ 
     def usuario_params_change_password
       params.require(:administracion_usuario).permit(:password,:password_confirmation)
     end
 
+    def permiso_edit
+      params.require(:permiso).permit(:permis_id)
+    end
 
 end

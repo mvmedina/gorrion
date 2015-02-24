@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150213191710) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
 
   create_table "administracion_controladors", force: true do |t|
     t.string   "subject_class"
@@ -78,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "sigesp_articulos", force: true do |t|
     t.string   "codemp"
     t.string   "codart"
@@ -122,6 +128,83 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.string   "unimeddetal"
     t.float    "preartdetal"
     t.boolean  "bol_estart"
+=======
+  create_table "pruebas", force: true do |t|
+    t.date     "fecha"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_almacens", force: true do |t|
+    t.string   "codemp"
+    t.string   "codalm"
+    t.string   "nomfisalm"
+    t.string   "desalm"
+    t.string   "telalm"
+    t.string   "ubialm"
+    t.string   "nomresalm"
+    t.string   "telresalm"
+    t.string   "coduniadm"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_cargos", force: true do |t|
+    t.string   "codemp"
+    t.string   "codcar"
+    t.string   "dencar"
+    t.string   "codestpro"
+    t.string   "spg_cuenta"
+    t.integer  "procar"
+    t.integer  "estlibcom"
+    t.string   "formula"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_departamentos", id: false, force: true do |t|
+    t.string   "codemp"
+    t.string   "coddep"
+    t.string   "dendep"
+    t.string   "coddepp"
+    t.string   "nivel"
+    t.string   "codperresponsable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_marcas", force: true do |t|
+    t.integer  "id_marca"
+    t.string   "str_idmarca"
+    t.string   "str_descripcion"
+    t.boolean  "bol_estatus"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_modelos", force: true do |t|
+    t.integer  "id_modelo"
+    t.string   "str_idmarca"
+    t.string   "str_idmodelo"
+    t.string   "str_descripcion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_personas", id: false, force: true do |t|
+    t.string "codemp"
+    t.string "codper"
+    t.string "cedper"
+    t.string "nomper"
+    t.string "apeper"
+    t.string "dirper"
+  end
+
+  create_table "sigesp_regions", id: false, force: true do |t|
+    t.integer  "seq_region"
+    t.string   "str_descripcion"
+    t.string   "str_codregion"
+>>>>>>> upstream/master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -226,11 +309,52 @@ ActiveRecord::Schema.define(version: 20150213191710) do
   create_table "sigesp_unidads", force: true do |t|
     t.string   "codunimed"
     t.string   "denunimed"
+<<<<<<< HEAD
     t.float    "unidad"
+=======
+    t.integer  "unidad"
+>>>>>>> upstream/master
     t.string   "obsunimed"
     t.string   "tiposep"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "sno_hconceptovacacion", id: false, force: true do |t|
+    t.string "codemp",          limit: 4,  null: false
+    t.string "codnom",          limit: 4,  null: false
+    t.string "anocur",          limit: 4,  null: false
+    t.string "codperi",         limit: 3,  null: false
+    t.string "codconc",         limit: 10, null: false
+    t.text   "forsalvac",                  null: false
+    t.float  "acumaxsalvac",               null: false
+    t.float  "minsalvac",                  null: false
+    t.float  "maxsalvac",                  null: false
+    t.text   "consalvac",                  null: false
+    t.text   "forpatsalvac",               null: false
+    t.float  "minpatsalvac",               null: false
+    t.float  "maxpatsalvac",               null: false
+    t.text   "forreivac",                  null: false
+    t.float  "acumaxreivac",               null: false
+    t.float  "minreivac",                  null: false
+    t.float  "maxreivac",                  null: false
+    t.text   "conreivac",                  null: false
+    t.text   "forpatreivac",               null: false
+    t.float  "minpatreivac",               null: false
+    t.float  "maxpatreivac",               null: false
+    t.float  "acumaxsalvacaux"
+    t.float  "minsalvacaux"
+    t.float  "maxsalvacaux"
+    t.float  "minpatsalvacaux"
+    t.float  "maxpatsalvacaux"
+    t.float  "acumaxreivacaux"
+    t.float  "minreivacaux"
+    t.float  "maxreivacaux"
+    t.float  "minpatreivacaux"
+    t.float  "maxpatreivacaux"
+  end
+
+>>>>>>> upstream/master
 end

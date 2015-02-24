@@ -5,9 +5,8 @@ Gorrion::Application.routes.draw do
     resources :usuarios do
         
         get 'permisos', to: 'usuarios#permisos_usuario'
-        post 'addpermiso/:permiso_id/', to: 'usuarios#add_permiso_usuario' , as: :permiso_add
-        post 'deletepermiso/:permiso_id/', to: 'usuarios#del_permiso_usuario', as: :permiso_del 
-        
+        post 'permiso/:permiso_id/add/', to: 'usuarios#add_permiso_usuario' , as: :permiso_add
+        post 'permiso/:permiso_id/del/', to: 'usuarios#del_permiso_usuario', as: :permiso_del 
         get   'password' , to: 'usuarios#password_edit'
         patch 'password' , to: 'usuarios#password_save'
       

@@ -3,7 +3,10 @@ class CreateSigespUnidads < ActiveRecord::Migration
     create_table :sigesp_unidads do |t|
       t.string :codunimed
       t.string :denunimed
+
       t.float :unidad
+
+
       t.string :obsunimed
       t.string :tiposep
 
