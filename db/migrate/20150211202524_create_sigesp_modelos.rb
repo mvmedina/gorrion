@@ -6,7 +6,7 @@ class CreateSigespModelos < ActiveRecord::Migration
       t.string :str_idmodelo
       t.string :str_descripcion
 
-      t.timestamps
+      
     end
   end
 end

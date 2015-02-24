@@ -7,7 +7,7 @@ class CreateSigespDepartamentos < ActiveRecord::Migration
       t.string :coddepp
       t.string :nivel
       t.string :codperresponsable
-      t.timestamps
+      
     end
   end
 end
