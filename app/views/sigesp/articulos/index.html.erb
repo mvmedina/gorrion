@@ -1,0 +1,50 @@
+<div class="table-responsive">
+  <div class="row buscar" >
+    <div class="col-md-6"></div>
+    <div class="col-md-5 " align="rigth">
+    <div class="input-group">  
+       <%= text_field_tag :search,params[:search],class: "form-control" %>  
+      <div class="input-group-btn">
+       <%= select_tag :sort,options_for_select(["codigo","descripcion"]), class: "form-control",selected:params[:sort]%>
+       <%= content_tag :button,'Buscar',class: "btn btn-default buscararticulo", data: { tipoarticulo:@tipo.id } %>
+      </div>
+    </div><!-- /input-group -->
+   </div> 
+   </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Denominacion</th>
+        <th>Unidad</th>
+        <th>Existencia</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+   <tbody>
+	 <% @lista.each do |item| %>
+	 	<tr>
+	 		<td><%= item.codart %></td>
+	 		<td data-toggle="tooltip" title="<%= item.denart %>"><%= truncate(item.denart) %></td>
+      <td><%= item.unidad.denunimed %></td>
+      <td><%= item.exiart %></td>
+      <td><%= item.prearta %></td>
+      <td>  
+        <%= content_tag :span ,"",class: "glyphicon glyphicon-ok",
+        data:{ codigo:item.codart,denom:item.denart} %>
+      </td>
+	 	</tr>
+	 <% end %>     
+   </tbody>
+  </table>
+</div> 
+<div align="right">
+  Cantidad :<input id="cantidad" type="number" value="1"  min="0.0" step="any" />
+  Precio :<input id="precio" type="number" step="any" min="0.0" />
+<div>
+<div align="right" class="catalagoArticulo" data-url="<%=  sigesp_articulos_path  %>">
+  <%= will_paginate @lista, renderer: BootstrapPagination::Rails %> 
+</div>
+<label><%= page_entries_info @lista %></label>
+
+ 

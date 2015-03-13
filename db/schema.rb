@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150311205654) do
+=======
+ActiveRecord::Schema.define(version: 20150213191710) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> upstream/master
 
   create_table "administracion_controladors", force: true do |t|
     t.string   "subject_class"
@@ -63,6 +70,18 @@ ActiveRecord::Schema.define(version: 20150311205654) do
 
   add_index "administracion_usuarios", ["email"], name: "index_administracion_usuarios_on_email", unique: true, using: :btree
   add_index "administracion_usuarios", ["reset_password_token"], name: "index_administracion_usuarios_on_reset_password_token", unique: true, using: :btree
+
+  create_table "personas", force: true do |t|
+    t.string   "codemp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pruebas", force: true do |t|
+    t.date     "fecha"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sigesp_almacens", force: true do |t|
     t.string   "codemp"
@@ -187,6 +206,7 @@ ActiveRecord::Schema.define(version: 20150311205654) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "sigesp_dt_articulos", force: true do |t|
     t.string   "codemp"
     t.string   "numsol"
@@ -247,28 +267,7 @@ ActiveRecord::Schema.define(version: 20150311205654) do
     t.float    "monbasimpaux"
     t.float    "monimpaux"
     t.float    "montoaux"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sigesp_marcas", force: true do |t|
-    t.integer  "id_marca"
-    t.string   "str_idmarca"
-    t.string   "str_descripcion"
-    t.boolean  "bol_estatus"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sigesp_modelos", force: true do |t|
-    t.integer  "id_modelo"
-    t.string   "str_idmarca"
-    t.string   "str_idmodelo"
-    t.string   "str_descripcion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
+=======
   create_table "sigesp_personas", id: false, force: true do |t|
     t.string "codemp"
     t.string "codper"
@@ -279,22 +278,29 @@ ActiveRecord::Schema.define(version: 20150311205654) do
   end
 
   create_table "sigesp_regions", id: false, force: true do |t|
-    t.integer "seq_region"
-    t.string  "str_descripcion"
-    t.string  "str_codregion"
+    t.integer  "seq_region"
+    t.string   "str_descripcion"
+    t.string   "str_codregion"
+>>>>>>> upstream/master
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sigesp_sedes", id: false, force: true do |t|
-    t.integer "seq_sede"
-    t.string  "str_descripcion"
-    t.string  "str_codsede"
-    t.integer "int_region"
+    t.integer  "seq_sede"
+    t.string   "str_descripcion"
+    t.string   "str_codsede"
+    t.integer  "int_region"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sigesp_servicios", id: false, force: true do |t|
-    t.integer "seq_servicio"
-    t.string  "str_descripcion"
-    t.string  "str_codservicio"
+    t.integer  "seq_servicio"
+    t.string   "str_descripcion"
+    t.string   "str_codservicio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sigesp_serviciosedes", id: false, force: true do |t|
@@ -401,11 +407,52 @@ ActiveRecord::Schema.define(version: 20150311205654) do
   create_table "sigesp_unidads", force: true do |t|
     t.string   "codunimed"
     t.string   "denunimed"
+<<<<<<< HEAD
     t.float    "unidad"
+=======
+    t.integer  "unidad"
+>>>>>>> upstream/master
     t.string   "obsunimed"
     t.string   "tiposep"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "sno_hconceptovacacion", id: false, force: true do |t|
+    t.string "codemp",          limit: 4,  null: false
+    t.string "codnom",          limit: 4,  null: false
+    t.string "anocur",          limit: 4,  null: false
+    t.string "codperi",         limit: 3,  null: false
+    t.string "codconc",         limit: 10, null: false
+    t.text   "forsalvac",                  null: false
+    t.float  "acumaxsalvac",               null: false
+    t.float  "minsalvac",                  null: false
+    t.float  "maxsalvac",                  null: false
+    t.text   "consalvac",                  null: false
+    t.text   "forpatsalvac",               null: false
+    t.float  "minpatsalvac",               null: false
+    t.float  "maxpatsalvac",               null: false
+    t.text   "forreivac",                  null: false
+    t.float  "acumaxreivac",               null: false
+    t.float  "minreivac",                  null: false
+    t.float  "maxreivac",                  null: false
+    t.text   "conreivac",                  null: false
+    t.text   "forpatreivac",               null: false
+    t.float  "minpatreivac",               null: false
+    t.float  "maxpatreivac",               null: false
+    t.float  "acumaxsalvacaux"
+    t.float  "minsalvacaux"
+    t.float  "maxsalvacaux"
+    t.float  "minpatsalvacaux"
+    t.float  "maxpatsalvacaux"
+    t.float  "acumaxreivacaux"
+    t.float  "minreivacaux"
+    t.float  "maxreivacaux"
+    t.float  "minpatreivacaux"
+    t.float  "maxpatreivacaux"
+  end
+
+>>>>>>> upstream/master
 end

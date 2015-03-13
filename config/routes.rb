@@ -16,7 +16,24 @@ Gorrion::Application.routes.draw do
         patch 'password' , to: 'usuarios#password_save'      
       end 
   end
-  
+
+  namespace :sigesp do
+      get 'tiposArticulos/',to: 'tipoarticulo#tiposArticulos'
+      get 'articulos/', to: 'articulos#index' , as: :articulos
+  end
+
+
+
+
+
+
+#  scope module :sigesp do
+#      get 'suministros/',to: 'sigesp/tipoarticulo#suministros' 
+#      get 'maquinaria/',to: 'tipoarticulo#maquinaria' 
+#      get 'donaciones/',to: 'tipoarticulo#donaciones'
+#      get 'otros/',to: 'tipoarticulo#otros' 
+#  end
+
   namespace :admin do
      resources :usuarios
   end
