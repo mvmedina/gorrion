@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20150311205654) do
+=======
 ActiveRecord::Schema.define(version: 20150213191710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+>>>>>>> upstream/master
 
   create_table "administracion_controladors", force: true do |t|
     t.string   "subject_class"
@@ -152,9 +156,41 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.string   "dencar"
     t.string   "codestpro"
     t.string   "spg_cuenta"
-    t.integer  "procar"
+    t.float    "procar"
     t.integer  "estlibcom"
     t.string   "formula"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_ctrl_requisicions", force: true do |t|
+    t.string   "codemp"
+    t.string   "coduac"
+    t.string   "prefijo"
+    t.integer  "valor"
+    t.integer  "nro_final"
+    t.integer  "maxlen"
+    t.date     "ultfecha"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_cuenta_gastos", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.string   "codestpro1"
+    t.string   "codestpro2"
+    t.string   "codestpro3"
+    t.string   "codestpro4"
+    t.string   "codestpro5"
+    t.string   "spg_cuenta"
+    t.float    "monto"
+    t.float    "montoaux"
+    t.string   "codfuefin"
+    t.string   "cod_servicio"
+    t.string   "cod_sede"
+    t.string   "cod_region"
+    t.string   "str_codregionsedeservicio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -170,24 +206,68 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.datetime "updated_at"
   end
 
-  create_table "sigesp_marcas", force: true do |t|
-    t.integer  "id_marca"
-    t.string   "str_idmarca"
-    t.string   "str_descripcion"
-    t.boolean  "bol_estatus"
+<<<<<<< HEAD
+  create_table "sigesp_dt_articulos", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.string   "codart"
+    t.float    "canart"
+    t.string   "unidad"
+    t.float    "monpre"
+    t.float    "monart"
+    t.integer  "orden"
+    t.string   "codestpro1"
+    t.string   "codestpro2"
+    t.string   "codestpro3"
+    t.string   "codestpro4"
+    t.string   "codestpro5"
+    t.string   "spg_cuenta"
+    t.string   "estincite"
+    t.string   "numdocdes"
+    t.float    "monpreaux"
+    t.float    "monartaux"
+    t.string   "codalm"
+    t.string   "cod_servicio"
+    t.string   "cod_sede"
+    t.string   "cod_region"
+    t.string   "str_codregionsedeservicio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sigesp_modelos", force: true do |t|
-    t.integer  "id_modelo"
-    t.string   "str_idmarca"
-    t.string   "str_idmodelo"
-    t.string   "str_descripcion"
+  create_table "sigesp_dt_cargos", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.string   "codart"
+    t.string   "codcar"
+    t.float    "monbasimp"
+    t.float    "monimp"
+    t.float    "monto"
+    t.string   "formula"
+    t.float    "monbasimpaux"
+    t.float    "monimpaux"
+    t.float    "montoaux"
+    t.string   "cod_servicio"
+    t.string   "cod_sede"
+    t.string   "cod_region"
+    t.string   "str_codregionsedeservicio"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "sigesp_dts_cargos", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.string   "codser"
+    t.string   "codcar"
+    t.float    "monbasimp"
+    t.float    "monimp"
+    t.float    "monto"
+    t.string   "formula"
+    t.float    "monbasimpaux"
+    t.float    "monimpaux"
+    t.float    "montoaux"
+=======
   create_table "sigesp_personas", id: false, force: true do |t|
     t.string "codemp"
     t.string "codper"
@@ -201,6 +281,7 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.integer  "seq_region"
     t.string   "str_descripcion"
     t.string   "str_codregion"
+>>>>>>> upstream/master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -227,6 +308,85 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.integer "int_sede"
   end
 
+  create_table "sigesp_solicitud_cargos", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.string   "codcar"
+    t.string   "codestpro1"
+    t.string   "codestpro2"
+    t.string   "codestpro3"
+    t.string   "codestpro4"
+    t.string   "codestpro5"
+    t.string   "spg_cuenta"
+    t.float    "monobjret"
+    t.float    "monret"
+    t.string   "cod_pro"
+    t.string   "ced_bene"
+    t.string   "sc_cuenta"
+    t.string   "formula"
+    t.float    "monto"
+    t.float    "monobjretaux"
+    t.float    "monretaux"
+    t.float    "montoaux"
+    t.string   "codfuefin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_solicitud_tipos", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.boolean  "bol_compra"
+    t.string   "coddepalmacen"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_solicitud_users", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.string   "usuario"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_solicituds", force: true do |t|
+    t.string   "codemp"
+    t.string   "numsol"
+    t.string   "codtipsol"
+    t.string   "coduniadm"
+    t.string   "codfuefin"
+    t.date     "fecregsol"
+    t.string   "estsol"
+    t.string   "consol"
+    t.float    "monto"
+    t.float    "monbasinm"
+    t.float    "montotcar"
+    t.string   "tipo_destino"
+    t.string   "cod_pro"
+    t.string   "ced_bene"
+    t.string   "firnivsol"
+    t.string   "firnivadm"
+    t.string   "firnivpre"
+    t.integer  "estapro"
+    t.date     "fecaprsep"
+    t.string   "codaprusu"
+    t.float    "numpolcon"
+    t.date     "fechaconta"
+    t.date     "fechaanula"
+    t.float    "monbasinmaux"
+    t.float    "montotcaraux"
+    t.float    "montoaux"
+    t.string   "undadm"
+    t.string   "destino"
+    t.string   "cod_servicio"
+    t.string   "cod_sede"
+    t.string   "cod_region"
+    t.string   "str_codregionsedeservicio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sigesp_tipo_articulos", force: true do |t|
     t.string   "codtipart"
     t.string   "dentipart"
@@ -247,13 +407,19 @@ ActiveRecord::Schema.define(version: 20150213191710) do
   create_table "sigesp_unidads", force: true do |t|
     t.string   "codunimed"
     t.string   "denunimed"
+<<<<<<< HEAD
+    t.float    "unidad"
+=======
     t.integer  "unidad"
+>>>>>>> upstream/master
     t.string   "obsunimed"
     t.string   "tiposep"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
   create_table "sno_hconceptovacacion", id: false, force: true do |t|
     t.string "codemp",          limit: 4,  null: false
     t.string "codnom",          limit: 4,  null: false
@@ -288,4 +454,5 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.float  "maxpatreivacaux"
   end
 
+>>>>>>> upstream/master
 end

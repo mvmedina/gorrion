@@ -1,0 +1,2 @@
+module Sigesp::SolicitudsAlmacenHelper
+end

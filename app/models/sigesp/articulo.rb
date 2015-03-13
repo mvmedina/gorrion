@@ -4,8 +4,10 @@ class Sigesp::Articulo < ActiveRecord::Base
 
 	belongs_to :unidad, foreign_key: "codunimed", class_name: "Sigesp::Unidad"
 	belongs_to :tipo_articulo, foreign_key: "codtipart", class_name: "Sigesp::TipoArticulo"
-	has_and_belongs_to_many :cargos, class_name: "Sigesp::Cargo", join_table: "public.siv_cargosarticulo", foreign_key:"codart" ,association_foreign_key: "codcar"
-   
+
+	# has_and_belongs_to_many :cargos, class_name: "Sigesp::Cargo", join_table: "public.siv_cargosarticulo", foreign_key:"codart" ,association_foreign_key: "codcar"    
+    belong_to :dt_cargo, foreign_key: "codemp", class_name: "Sigesp::DtCargo"
+	
 	self.per_page = 10 
 
 	def self.search(page = 1 , search , sort)
