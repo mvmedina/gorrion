@@ -17,11 +17,9 @@
       padre.append label
       label.addClass 'erro_campo'
     return
-
-  return
+  return 
 ) jQuery
 
-    
 
 $.rails.allowAction = (link) ->
   return true unless link.attr('data-confirm')
@@ -55,5 +53,90 @@ $.rails.showConfirmDialog = (link) ->
   $(html).modal()
   $('#confirmationDialog .confirm').on 'click', -> $.rails.confirmed(link)
 
+#crear Ventana
+(($) ->
+  close_action = (e)->
+    modal = $(this).parent().parent().parent().parent()
+    modal.modal('hide')
+    modal.remove()
+    return 
 
- 
+  $.fn.footer =(title_button,acion)->
+    modal_footer = $('<div/>',{ 
+      class: "modal-footer" 
+    })
+    button_close = $('<button/>',{ 
+      type: "button"
+      class: "btn btn-default" 
+    })
+    button_close.append "cerrar"
+    button_close.on "click", close_action  
+
+    button_action = $('<button/>',{ 
+      type: "button"
+      class: "btn btn-primary" 
+    })
+    
+    if title_button != null
+      modal_footer.append button_action
+      button_action.on "click", acion  
+      button_action.append title_button
+  
+    modal_footer.append button_close
+    return  modal_footer
+
+  $.fn.crearHear =(titulo)->
+    modal_header = $('<div/>',
+    { 
+      class: "modal-header" 
+    })
+    button = $('<button/>',
+    {
+      type: "button"
+      class: "close"
+      "data-dismiss": "modal"
+      "aria-label": "Close"
+    })   
+    span = $('<span/>',{
+      "aria-hidden": "true"
+    })
+    
+    h4 = $('<h4/>',{
+      class: "modal-title"
+    })
+    h4.append titulo
+    
+    span.append "&times;"
+    button.append span
+
+    modal_header.append button 
+    modal_header.append h4 
+    return  modal_header
+
+  $.fn.crearVentana =(header,body,footer) ->
+    modal = $('<div/>',
+    {
+      class: "modal"
+      style:"width:95%" 
+    })
+    modal_dialog = $('<div/>',
+    {
+      class: "modal-dialog modal-lg"
+      style:"width:95%" 
+    })    
+    modal.append modal_dialog
+
+    modal_content = $('<div/>',
+    {
+      class: "modal-content"
+     
+    })    
+    modal_dialog.append modal_content
+
+    modal_content.append header
+    modal_content.append body
+    modal_content.append footer
+    $("body").append modal   
+    return modal 
+) jQuery
+

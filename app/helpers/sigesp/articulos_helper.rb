@@ -1,0 +1,2 @@
+module Sigesp::ArticulosHelper
+end

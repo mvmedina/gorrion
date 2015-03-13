@@ -11,12 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150213191710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "administracion_controladors", force: true do |t|
     t.string   "subject_class"
@@ -69,6 +67,18 @@ ActiveRecord::Schema.define(version: 20150213191710) do
   add_index "administracion_usuarios", ["email"], name: "index_administracion_usuarios_on_email", unique: true, using: :btree
   add_index "administracion_usuarios", ["reset_password_token"], name: "index_administracion_usuarios_on_reset_password_token", unique: true, using: :btree
 
+  create_table "personas", force: true do |t|
+    t.string   "codemp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pruebas", force: true do |t|
+    t.date     "fecha"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sigesp_almacens", force: true do |t|
     t.string   "codemp"
     t.string   "codalm"
@@ -83,7 +93,6 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
   create_table "sigesp_articulos", force: true do |t|
     t.string   "codemp"
     t.string   "codart"
@@ -128,25 +137,13 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.string   "unimeddetal"
     t.float    "preartdetal"
     t.boolean  "bol_estart"
-=======
-  create_table "pruebas", force: true do |t|
-    t.date     "fecha"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sigesp_almacens", force: true do |t|
-    t.string   "codemp"
-    t.string   "codalm"
-    t.string   "nomfisalm"
-    t.string   "desalm"
-    t.string   "telalm"
-    t.string   "ubialm"
-    t.string   "nomresalm"
-    t.string   "telresalm"
-    t.string   "coduniadm"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "sigesp_cargoarticulos", force: true do |t|
+    t.string "codart"
+    t.string "codcar"
   end
 
   create_table "sigesp_cargos", force: true do |t|
@@ -204,84 +201,25 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.integer  "seq_region"
     t.string   "str_descripcion"
     t.string   "str_codregion"
->>>>>>> upstream/master
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "sigesp_cargoarticulos", force: true do |t|
-    t.string "codart"
-    t.string "codcar"
-  end
-
-  create_table "sigesp_cargos", force: true do |t|
-    t.string   "codemp"
-    t.string   "codcar"
-    t.string   "dencar"
-    t.string   "codestpro"
-    t.string   "spg_cuenta"
-    t.float    "procar"
-    t.integer  "estlibcom"
-    t.string   "formula"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sigesp_departamentos", id: false, force: true do |t|
-    t.string   "codemp"
-    t.string   "coddep"
-    t.string   "dendep"
-    t.string   "coddepp"
-    t.string   "nivel"
-    t.string   "codperresponsable"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sigesp_marcas", force: true do |t|
-    t.integer  "id_marca"
-    t.string   "str_idmarca"
-    t.string   "str_descripcion"
-    t.boolean  "bol_estatus"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sigesp_modelos", force: true do |t|
-    t.integer  "id_modelo"
-    t.string   "str_idmarca"
-    t.string   "str_idmodelo"
-    t.string   "str_descripcion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sigesp_personas", id: false, force: true do |t|
-    t.string "codemp"
-    t.string "codper"
-    t.string "cedper"
-    t.string "nomper"
-    t.string "apeper"
-    t.string "dirper"
-  end
-
-  create_table "sigesp_regions", id: false, force: true do |t|
-    t.integer "seq_region"
-    t.string  "str_descripcion"
-    t.string  "str_codregion"
   end
 
   create_table "sigesp_sedes", id: false, force: true do |t|
-    t.integer "seq_sede"
-    t.string  "str_descripcion"
-    t.string  "str_codsede"
-    t.integer "int_region"
+    t.integer  "seq_sede"
+    t.string   "str_descripcion"
+    t.string   "str_codsede"
+    t.integer  "int_region"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sigesp_servicios", id: false, force: true do |t|
-    t.integer "seq_servicio"
-    t.string  "str_descripcion"
-    t.string  "str_codservicio"
+    t.integer  "seq_servicio"
+    t.string   "str_descripcion"
+    t.string   "str_codservicio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sigesp_serviciosedes", id: false, force: true do |t|
@@ -309,19 +247,13 @@ ActiveRecord::Schema.define(version: 20150213191710) do
   create_table "sigesp_unidads", force: true do |t|
     t.string   "codunimed"
     t.string   "denunimed"
-<<<<<<< HEAD
-    t.float    "unidad"
-=======
     t.integer  "unidad"
->>>>>>> upstream/master
     t.string   "obsunimed"
     t.string   "tiposep"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   create_table "sno_hconceptovacacion", id: false, force: true do |t|
     t.string "codemp",          limit: 4,  null: false
     t.string "codnom",          limit: 4,  null: false
@@ -356,5 +288,4 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.float  "maxpatreivacaux"
   end
 
->>>>>>> upstream/master
 end
