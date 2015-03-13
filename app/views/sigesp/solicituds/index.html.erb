@@ -1,0 +1,89 @@
+<h1>Listing sigesp_solicituds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Codemp</th>
+      <th>Numsol</th>
+      <th>Codtipsol</th>
+      <th>Coduniadm</th>
+      <th>Codfuefin</th>
+      <th>Fecregsol</th>
+      <th>Estsol</th>
+      <th>Consol</th>
+      <th>Monto</th>
+      <th>Monbasinm</th>
+      <th>Montotcar</th>
+      <th>Tipo destino</th>
+      <th>Cod pro</th>
+      <th>Ced bene</th>
+      <th>Firnivsol</th>
+      <th>Firnivadm</th>
+      <th>Firnivpre</th>
+      <th>Estapro</th>
+      <th>Fecaprsep</th>
+      <th>Codaprusu</th>
+      <th>Numpolcon</th>
+      <th>Fechaconta</th>
+      <th>Fechaanula</th>
+      <th>Monbasinmaux</th>
+      <th>Montotcaraux</th>
+      <th>Montoaux</th>
+      <th>Undadm</th>
+      <th>Destino</th>
+      <th>Cod servicio</th>
+      <th>Cod sede</th>
+      <th>Cod region</th>
+      <th>Str codregionsedeservicio</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sigesp_solicituds.each do |sigesp_solicitud| %>
+      <tr>
+        <td><%= sigesp_solicitud.codemp %></td>
+        <td><%= sigesp_solicitud.numsol %></td>
+        <td><%= sigesp_solicitud.codtipsol %></td>
+        <td><%= sigesp_solicitud.coduniadm %></td>
+        <td><%= sigesp_solicitud.codfuefin %></td>
+        <td><%= sigesp_solicitud.fecregsol %></td>
+        <td><%= sigesp_solicitud.estsol %></td>
+        <td><%= sigesp_solicitud.consol %></td>
+        <td><%= sigesp_solicitud.monto %></td>
+        <td><%= sigesp_solicitud.monbasinm %></td>
+        <td><%= sigesp_solicitud.montotcar %></td>
+        <td><%= sigesp_solicitud.tipo_destino %></td>
+        <td><%= sigesp_solicitud.cod_pro %></td>
+        <td><%= sigesp_solicitud.ced_bene %></td>
+        <td><%= sigesp_solicitud.firnivsol %></td>
+        <td><%= sigesp_solicitud.firnivadm %></td>
+        <td><%= sigesp_solicitud.firnivpre %></td>
+        <td><%= sigesp_solicitud.estapro %></td>
+        <td><%= sigesp_solicitud.fecaprsep %></td>
+        <td><%= sigesp_solicitud.codaprusu %></td>
+        <td><%= sigesp_solicitud.numpolcon %></td>
+        <td><%= sigesp_solicitud.fechaconta %></td>
+        <td><%= sigesp_solicitud.fechaanula %></td>
+        <td><%= sigesp_solicitud.monbasinmaux %></td>
+        <td><%= sigesp_solicitud.montotcaraux %></td>
+        <td><%= sigesp_solicitud.montoaux %></td>
+        <td><%= sigesp_solicitud.undadm %></td>
+        <td><%= sigesp_solicitud.destino %></td>
+        <td><%= sigesp_solicitud.cod_servicio %></td>
+        <td><%= sigesp_solicitud.cod_sede %></td>
+        <td><%= sigesp_solicitud.cod_region %></td>
+        <td><%= sigesp_solicitud.str_codregionsedeservicio %></td>
+        <td><%= link_to 'Show', sigesp_solicitud %></td>
+        <td><%= link_to 'Edit', edit_sigesp_solicitud_path(sigesp_solicitud) %></td>
+        <td><%= link_to 'Destroy', sigesp_solicitud, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Solicitud', new_sigesp_solicitud_path %>

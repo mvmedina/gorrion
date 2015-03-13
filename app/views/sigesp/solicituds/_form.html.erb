@@ -1,0 +1,145 @@
+<%= form_for(@sigesp_solicitud) do |f| %>
+  <% if @sigesp_solicitud.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sigesp_solicitud.errors.count, "error") %> prohibited this sigesp_solicitud from being saved:</h2>
+
+      <ul>
+      <% @sigesp_solicitud.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codemp %><br>
+    <%= f.text_field :codemp %>
+  </div>
+  <div class="field">
+    <%= f.label :numsol %><br>
+    <%= f.text_field :numsol %>
+  </div>
+  <div class="field">
+    <%= f.label :codtipsol %><br>
+    <%= f.text_field :codtipsol %>
+  </div>
+  <div class="field">
+    <%= f.label :coduniadm %><br>
+    <%= f.text_field :coduniadm %>
+  </div>
+  <div class="field">
+    <%= f.label :codfuefin %><br>
+    <%= f.text_field :codfuefin %>
+  </div>
+  <div class="field">
+    <%= f.label :fecregsol %><br>
+    <%= f.date_select :fecregsol %>
+  </div>
+  <div class="field">
+    <%= f.label :estsol %><br>
+    <%= f.text_field :estsol %>
+  </div>
+  <div class="field">
+    <%= f.label :consol %><br>
+    <%= f.text_field :consol %>
+  </div>
+  <div class="field">
+    <%= f.label :monto %><br>
+    <%= f.text_field :monto %>
+  </div>
+  <div class="field">
+    <%= f.label :monbasinm %><br>
+    <%= f.text_field :monbasinm %>
+  </div>
+  <div class="field">
+    <%= f.label :montotcar %><br>
+    <%= f.text_field :montotcar %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_destino %><br>
+    <%= f.text_field :tipo_destino %>
+  </div>
+  <div class="field">
+    <%= f.label :cod_pro %><br>
+    <%= f.text_field :cod_pro %>
+  </div>
+  <div class="field">
+    <%= f.label :ced_bene %><br>
+    <%= f.text_field :ced_bene %>
+  </div>
+  <div class="field">
+    <%= f.label :firnivsol %><br>
+    <%= f.text_field :firnivsol %>
+  </div>
+  <div class="field">
+    <%= f.label :firnivadm %><br>
+    <%= f.text_field :firnivadm %>
+  </div>
+  <div class="field">
+    <%= f.label :firnivpre %><br>
+    <%= f.text_field :firnivpre %>
+  </div>
+  <div class="field">
+    <%= f.label :estapro %><br>
+    <%= f.number_field :estapro %>
+  </div>
+  <div class="field">
+    <%= f.label :fecaprsep %><br>
+    <%= f.date_select :fecaprsep %>
+  </div>
+  <div class="field">
+    <%= f.label :codaprusu %><br>
+    <%= f.text_field :codaprusu %>
+  </div>
+  <div class="field">
+    <%= f.label :numpolcon %><br>
+    <%= f.text_field :numpolcon %>
+  </div>
+  <div class="field">
+    <%= f.label :fechaconta %><br>
+    <%= f.date_select :fechaconta %>
+  </div>
+  <div class="field">
+    <%= f.label :fechaanula %><br>
+    <%= f.date_select :fechaanula %>
+  </div>
+  <div class="field">
+    <%= f.label :monbasinmaux %><br>
+    <%= f.text_field :monbasinmaux %>
+  </div>
+  <div class="field">
+    <%= f.label :montotcaraux %><br>
+    <%= f.text_field :montotcaraux %>
+  </div>
+  <div class="field">
+    <%= f.label :montoaux %><br>
+    <%= f.text_field :montoaux %>
+  </div>
+  <div class="field">
+    <%= f.label :undadm %><br>
+    <%= f.text_field :undadm %>
+  </div>
+  <div class="field">
+    <%= f.label :destino %><br>
+    <%= f.text_field :destino %>
+  </div>
+  <div class="field">
+    <%= f.label :cod_servicio %><br>
+    <%= f.text_field :cod_servicio %>
+  </div>
+  <div class="field">
+    <%= f.label :cod_sede %><br>
+    <%= f.text_field :cod_sede %>
+  </div>
+  <div class="field">
+    <%= f.label :cod_region %><br>
+    <%= f.text_field :cod_region %>
+  </div>
+  <div class="field">
+    <%= f.label :str_codregionsedeservicio %><br>
+    <%= f.text_field :str_codregionsedeservicio %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

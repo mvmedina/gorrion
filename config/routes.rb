@@ -1,5 +1,10 @@
 Gorrion::Application.routes.draw do
 
+  namespace :sigesp do
+    resources :solicituds
+    resources :solicitudsalmacens
+  end
+
   devise_for :usuarios, class_name: "Administracion::Usuario"
   namespace :administracion do
     resources :usuarios do
@@ -8,8 +13,7 @@ Gorrion::Application.routes.draw do
         post 'permiso/:permiso_id/add/', to: 'usuarios#add_permiso_usuario' , as: :permiso_add
         post 'permiso/:permiso_id/del/', to: 'usuarios#del_permiso_usuario', as: :permiso_del 
         get   'password' , to: 'usuarios#password_edit'
-        patch 'password' , to: 'usuarios#password_save'
-      
+        patch 'password' , to: 'usuarios#password_save'      
       end 
   end
   
