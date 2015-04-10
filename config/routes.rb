@@ -18,14 +18,14 @@ Gorrion::Application.routes.draw do
   end
 
   namespace :sigesp do
-      get 'tiposArticulos/',to: 'tipoarticulo#tiposArticulos'
-      get 'articulos/', to: 'articulos#index' , as: :articulos
+    get 'tiposArticulos/',to: 'tipoarticulo#tiposArticulos'
+    get 'articulos/', to: 'articulos#index' , as: :articulos
+    get 'servicios/', to: 'sede_servicio#index', as: :servicios
+    get 'unidadAdministrativas/', to: 'unidad_administrativa#index', as: :unidad_administrativas
+
   end
 
-
-
-
-
+  
 
 #  scope module :sigesp do
 #      get 'suministros/',to: 'sigesp/tipoarticulo#suministros' 

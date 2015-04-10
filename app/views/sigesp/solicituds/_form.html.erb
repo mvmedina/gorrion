@@ -1,4 +1,4 @@
-<%= form_for(@sigesp_solicitud) do |f| %>
+<%= form_for(@sigesp_solicitud,html: {class:'form-horizontal', role:'form'})  do |f| %>
   <% if @sigesp_solicitud.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sigesp_solicitud.errors.count, "error") %> prohibited this sigesp_solicitud from being saved:</h2>
@@ -11,135 +11,81 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :codemp %><br>
-    <%= f.text_field :codemp %>
+  <div class="form-group">
+    <%= f.label :cod_sede, class:"col-md-2 control-label" do |n| %>
+      Sede
+    <% end %>
+    <div class="col-md-3">
+       <%= f.collection_select :cod_sede, Sigesp::Sede.all, :seq_sede, :str_descripcion, options={prompt: 'Seleccione'}, 
+           html_options={class: "form-control input-sm",data: { url: sigesp_servicios_path }} %>
+    </div>
+    <%= f.label :cod_servicio, class:"col-md-2 control-label" do |n| %>
+      Servicio
+     <% end %>
+    <div class="col-md-3">
+       <%= f.collection_select :cod_servicio, [], :seq_servicio, :str_descripcion, options={prompt: 'Seleccione'}, html_options={class: "form-control input-sm"} %>
+    </div>
+  </div> <!-- end form group-->
+  <div class="form-group">
+    <%= f.label :codfuefin, class:"col-md-2 control-label" do |n| %>
+      Fuente Financiamiento
+    <% end %>
+    <div class="col-md-3">
+       <%= f.collection_select :codfuefin, Sigesp::FuenteFinanciamiento.all, :codfuefin, :denfuefin, options={prompt: 'Seleccione'}, html_options={class: "form-control input-sm", data: 
+        { url: sigesp_unidad_administrativas_path }} %>
+    </div>
+    <%= f.label :unidadAdministrativa, class:"col-md-2 control-label" do |n| %>
+      Unidad Ejecutora
+    <% end %>
+    <div class="col-md-3">
+       <%= f.collection_select :unidadAdministrativa,[], :codemp, :denuniadm, options={prompt: 'Seleccione'}, html_options={class: "form-control input-sm"} %>
+    </div>
+  </div> 
+  <div class="form-group">
+    <%= f.label :consol, class:"col-md-2 control-label" do |n| %>
+      Concepto Solicitud
+    <% end %>
+    <div class="col-md-8">
+       <%= f.text_area :consol, class: "form-control input-sm", rows:"2" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :numsol %><br>
-    <%= f.text_field :numsol %>
+  <div class="form-group">
+    <div class="col-md-12">
+      <h4 class="page-header">DETALLE DE LA REQUISICION</h4>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :codtipsol %><br>
-    <%= f.text_field :codtipsol %>
+
+
+   <div class=" form-group">
+    <div class="col-md-9">
   </div>
-  <div class="field">
-    <%= f.label :coduniadm %><br>
-    <%= f.text_field :coduniadm %>
+    <input type="button" id="prueba" data-url="<%= sigesp_tiposArticulos_path %>" 
+     data-url-articulo="<%= sigesp_articulos_path %>" value="Agregar Item">
+    </input>
   </div>
-  <div class="field">
-    <%= f.label :codfuefin %><br>
-    <%= f.text_field :codfuefin %>
-  </div>
-  <div class="field">
-    <%= f.label :fecregsol %><br>
-    <%= f.date_select :fecregsol %>
-  </div>
-  <div class="field">
-    <%= f.label :estsol %><br>
-    <%= f.text_field :estsol %>
-  </div>
-  <div class="field">
-    <%= f.label :consol %><br>
-    <%= f.text_field :consol %>
-  </div>
-  <div class="field">
-    <%= f.label :monto %><br>
-    <%= f.text_field :monto %>
-  </div>
-  <div class="field">
-    <%= f.label :monbasinm %><br>
-    <%= f.text_field :monbasinm %>
-  </div>
-  <div class="field">
-    <%= f.label :montotcar %><br>
-    <%= f.text_field :montotcar %>
-  </div>
-  <div class="field">
-    <%= f.label :tipo_destino %><br>
-    <%= f.text_field :tipo_destino %>
-  </div>
-  <div class="field">
-    <%= f.label :cod_pro %><br>
-    <%= f.text_field :cod_pro %>
-  </div>
-  <div class="field">
-    <%= f.label :ced_bene %><br>
-    <%= f.text_field :ced_bene %>
-  </div>
-  <div class="field">
-    <%= f.label :firnivsol %><br>
-    <%= f.text_field :firnivsol %>
-  </div>
-  <div class="field">
-    <%= f.label :firnivadm %><br>
-    <%= f.text_field :firnivadm %>
-  </div>
-  <div class="field">
-    <%= f.label :firnivpre %><br>
-    <%= f.text_field :firnivpre %>
-  </div>
-  <div class="field">
-    <%= f.label :estapro %><br>
-    <%= f.number_field :estapro %>
-  </div>
-  <div class="field">
-    <%= f.label :fecaprsep %><br>
-    <%= f.date_select :fecaprsep %>
-  </div>
-  <div class="field">
-    <%= f.label :codaprusu %><br>
-    <%= f.text_field :codaprusu %>
-  </div>
-  <div class="field">
-    <%= f.label :numpolcon %><br>
-    <%= f.text_field :numpolcon %>
-  </div>
-  <div class="field">
-    <%= f.label :fechaconta %><br>
-    <%= f.date_select :fechaconta %>
-  </div>
-  <div class="field">
-    <%= f.label :fechaanula %><br>
-    <%= f.date_select :fechaanula %>
-  </div>
-  <div class="field">
-    <%= f.label :monbasinmaux %><br>
-    <%= f.text_field :monbasinmaux %>
-  </div>
-  <div class="field">
-    <%= f.label :montotcaraux %><br>
-    <%= f.text_field :montotcaraux %>
-  </div>
-  <div class="field">
-    <%= f.label :montoaux %><br>
-    <%= f.text_field :montoaux %>
-  </div>
-  <div class="field">
-    <%= f.label :undadm %><br>
-    <%= f.text_field :undadm %>
-  </div>
-  <div class="field">
-    <%= f.label :destino %><br>
-    <%= f.text_field :destino %>
-  </div>
-  <div class="field">
-    <%= f.label :cod_servicio %><br>
-    <%= f.text_field :cod_servicio %>
-  </div>
-  <div class="field">
-    <%= f.label :cod_sede %><br>
-    <%= f.text_field :cod_sede %>
-  </div>
-  <div class="field">
-    <%= f.label :cod_region %><br>
-    <%= f.text_field :cod_region %>
-  </div>
-  <div class="field">
-    <%= f.label :str_codregionsedeservicio %><br>
-    <%= f.text_field :str_codregionsedeservicio %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th> Código </th>
+        <th> Item </th> 
+        <th> Cantidad </th>
+        <th> Precio </th>
+        <th> Unidad </th>
+        <th> SubTotal </th>
+      </tr>
+    </thead> 
+  </table> 
+  
+  <div class=" form-group">
+    <div class="col-md-9">
+    </div>
+    <div class="col-md-1">
+      <%= f.submit "Guardar" , id: "pp", class: "btn btn-default "  %>
+    </div>
+    <div class="col-md-1">
+      <%= f.submit "Cancelar" , id: "pp", class: "btn btn-default "  %>
+    </div>
+  </div> 
+  
 <% end %>

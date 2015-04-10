@@ -1,5 +1,12 @@
-<h1>New sigesp_solicitud</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', sigesp_solicituds_path %>
+<div class="row page-header">
+	<div class="col-md-8">
+		<h4>DATOS DE LA REQUISICION</h4>
+	</div>
+	<div class="col-md-4" align="lefth" >
+		<%= link_to 'Regresar', sigesp_solicituds_path,class:"btn btn-default" %>				
+	</div>
+</div>
+<div class="row formulario_solcitud" url="<%= sigesp_solicituds_path %>" > 
+	<%= render 'form' %>
+</div>

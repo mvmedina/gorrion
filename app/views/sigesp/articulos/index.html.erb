@@ -1,7 +1,7 @@
 <div class="table-responsive">
   <div class="row buscar" >
     <div class="col-md-6"></div>
-    <div class="col-md-5 " align="rigth">
+    <div class="col-md-6" align="rigth">
     <div class="input-group">  
        <%= text_field_tag :search,params[:search],class: "form-control" %>  
       <div class="input-group-btn">
@@ -9,8 +9,8 @@
        <%= content_tag :button,'Buscar',class: "btn btn-default buscararticulo", data: { tipoarticulo:@tipo.id } %>
       </div>
     </div><!-- /input-group -->
-   </div> 
-   </div>
+    </div> 
+  </div>
   <table class="table">
     <thead>
       <tr>

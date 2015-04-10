@@ -4,7 +4,7 @@ class Sigesp::SolicitudsController < ApplicationController
   # GET /sigesp/solicituds
   # GET /sigesp/solicituds.json
   def index
-    @sigesp_solicituds = Sigesp::Solicitud.all
+    @sigesp_solicituds = Sigesp::Solicitud.search params[:page], params[:search], params[:sort]
   end
 
   # GET /sigesp/solicituds/1
@@ -69,6 +69,6 @@ class Sigesp::SolicitudsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sigesp_solicitud_params
-      params.require(:sigesp_solicitud).permit(:codemp, :numsol, :codtipsol, :coduniadm, :codfuefin, :fecregsol, :estsol, :consol, :monto, :monbasinm, :montotcar, :tipo_destino, :cod_pro, :ced_bene, :firnivsol, :firnivadm, :firnivpre, :estapro, :fecaprsep, :codaprusu, :numpolcon, :fechaconta, :fechaanula, :monbasinmaux, :montotcaraux, :montoaux, :undadm, :destino, :cod_servicio, :cod_sede, :cod_region, :str_codregionsedeservicio)
+      params.require(:sigesp_solicitud).permit(:codemp, :numsol, :unidadejecutora, :codtipsol, :coduniadm, :codfuefin, :fecregsol, :estsol, :consol, :tipo, :monto, :monbasinm, :montotcar, :tipo_destino, :cod_pro, :ced_bene, :firnivsol, :firnivadm, :firnivpre, :estapro, :fecaprsep, :codaprusu, :numpolcon, :fechaconta, :fechaanula, :monbasinmaux, :montotcaraux, :montoaux, :undadm, :destino, :cod_servicio, :cod_sede, :cod_region, :str_codregionsedeservicio)
     end
 end
