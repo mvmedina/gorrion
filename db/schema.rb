@@ -11,14 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150311205654) do
-=======
-ActiveRecord::Schema.define(version: 20150213191710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
->>>>>>> upstream/master
 
   create_table "administracion_controladors", force: true do |t|
     t.string   "subject_class"
@@ -156,7 +152,7 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.string   "dencar"
     t.string   "codestpro"
     t.string   "spg_cuenta"
-    t.float    "procar"
+    t.integer  "procar"
     t.integer  "estlibcom"
     t.string   "formula"
     t.datetime "created_at"
@@ -206,7 +202,6 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
   create_table "sigesp_dt_articulos", force: true do |t|
     t.string   "codemp"
     t.string   "numsol"
@@ -267,7 +262,28 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.float    "monbasimpaux"
     t.float    "monimpaux"
     t.float    "montoaux"
-=======
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_marcas", force: true do |t|
+    t.integer  "id_marca"
+    t.string   "str_idmarca"
+    t.string   "str_descripcion"
+    t.boolean  "bol_estatus"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sigesp_modelos", force: true do |t|
+    t.integer  "id_modelo"
+    t.string   "str_idmarca"
+    t.string   "str_idmodelo"
+    t.string   "str_descripcion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sigesp_personas", id: false, force: true do |t|
     t.string "codemp"
     t.string "codper"
@@ -281,7 +297,6 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.integer  "seq_region"
     t.string   "str_descripcion"
     t.string   "str_codregion"
->>>>>>> upstream/master
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -407,19 +422,13 @@ ActiveRecord::Schema.define(version: 20150213191710) do
   create_table "sigesp_unidads", force: true do |t|
     t.string   "codunimed"
     t.string   "denunimed"
-<<<<<<< HEAD
-    t.float    "unidad"
-=======
     t.integer  "unidad"
->>>>>>> upstream/master
     t.string   "obsunimed"
     t.string   "tiposep"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   create_table "sno_hconceptovacacion", id: false, force: true do |t|
     t.string "codemp",          limit: 4,  null: false
     t.string "codnom",          limit: 4,  null: false
@@ -454,5 +463,4 @@ ActiveRecord::Schema.define(version: 20150213191710) do
     t.float  "maxpatreivacaux"
   end
 
->>>>>>> upstream/master
 end

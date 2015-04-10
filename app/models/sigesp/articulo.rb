@@ -6,7 +6,7 @@ class Sigesp::Articulo < ActiveRecord::Base
 	belongs_to :tipo_articulo, foreign_key: "codtipart", class_name: "Sigesp::TipoArticulo"
 
 	# has_and_belongs_to_many :cargos, class_name: "Sigesp::Cargo", join_table: "public.siv_cargosarticulo", foreign_key:"codart" ,association_foreign_key: "codcar"    
-    belong_to :dt_cargo, foreign_key: "codemp", class_name: "Sigesp::DtCargo"
+    belongs_to :dt_cargo, foreign_key: "codemp", class_name: "Sigesp::DtCargo"
 	
 	self.per_page = 10 
 
