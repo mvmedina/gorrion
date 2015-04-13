@@ -14,7 +14,9 @@ class Sigesp::SolicitudsController < ApplicationController
 
   # GET /sigesp/solicituds/new
   def new
+    puts 'gogogogog'
     @sigesp_solicitud = Sigesp::Solicitud.new
+    puts 'gogogogog22'
   end
 
   # GET /sigesp/solicituds/1/edit
@@ -24,16 +26,17 @@ class Sigesp::SolicitudsController < ApplicationController
   # POST /sigesp/solicituds
   # POST /sigesp/solicituds.json
   def create
-    @sigesp_solicitud = Sigesp::Solicitud.new(sigesp_solicitud_params)
-
+    puts 'gogogogog'
+    puts params
+    @sigesp_solicitud = nil # Sigesp::Solicitud.new(sigesp_solicitud_params)
     respond_to do |format|
-      if @sigesp_solicitud.save
+      #if @sigesp_solicitud.save
         format.html { redirect_to @sigesp_solicitud, notice: 'Solicitud was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @sigesp_solicitud }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @sigesp_solicitud.errors, status: :unprocessable_entity }
-      end
+      #  format.json { render action: 'show', status: :created, location: @sigesp_solicitud }
+      #else
+      #  format.html { render action: 'new' }
+      #  format.json { render json: @sigesp_solicitud.errors, status: :unprocessable_entity }
+      #end
     end
   end
 
