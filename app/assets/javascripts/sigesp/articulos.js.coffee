@@ -8,6 +8,9 @@ buscar = (boton)->
   datos.tipoarticulo = $(boton).data('tipoarticulo')
   datos.search = $('.buscar #search').val()
   datos.sort  = $('.buscar #sort').val()
+  alert datos 
+  alert datos.sort 
+  alert datos.search
   data = 
   url: url
   data:datos 

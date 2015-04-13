@@ -13,6 +13,8 @@ class Sigesp::Articulo < ActiveRecord::Base
 	def self.search(page = 1 , search , sort)
 	    search ||= ""
    	 	sort = "codart" if sort =="codigo"
+   	 	sort = "denart" if sort == "descripcion"
+    
 	    if search.empty? 
 	      paginate(page: page).order(sort) rescue paginate(page: 1) 
 	    else
