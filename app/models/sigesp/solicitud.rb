@@ -6,7 +6,10 @@ class Sigesp::Solicitud < ActiveRecord::Base
     has_many :solicitudUsers, class_name: "Sigesp::SolicitudUser", foreign_key:"numsol"
     has_many :solicitudTipos, class_name: "Sigesp::SolicitudTipo", foreign_key:"numsol"
     has_many :dtArticulos, class_name: "Sigesp::DtArticulos", foreign_key: "numsol"
+    
     belongs_to :solicitud_cargo, foreign_key: "codemp", class_name: "Sigesp::SolicitudCargo"
+    belongs_to :unidadAdministrativa, foreign_key: "coduniadm", class_name: "Sigesp::UnidadAdministrativa"
+    belongs_to :tipoSolicitud, foreign_key: "codtipsol", class_name: "Sigesp::TipoSolicitud"
 
 
 	def id 
