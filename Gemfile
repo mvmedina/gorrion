@@ -67,3 +67,5 @@ gem 'cancan'
 
 gem 'pg' 
 
+gem 'select2-rails'
+

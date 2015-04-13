@@ -46,7 +46,7 @@ class Administracion::Usuario < ActiveRecord::Base
 
 
   validates :username , 
-      presence: {message: ' Ingrese un user mail '},
+      presence: {message: ' Ingrese un username '},
       uniqueness: {message: 'ya Registrado', on: :create },
       length: {maximum: 15 , too_long:"%{count} caracteres es el maximo  "}
 
