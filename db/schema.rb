@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150401151125) do
+=======
+ActiveRecord::Schema.define(version: 20150311205654) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> upstream/master
 
   create_table "administracion_controladors", force: true do |t|
     t.string   "subject_class"
@@ -137,7 +144,7 @@ ActiveRecord::Schema.define(version: 20150401151125) do
     t.string   "dencar"
     t.string   "codestpro"
     t.string   "spg_cuenta"
-    t.float    "procar"
+    t.integer  "procar"
     t.integer  "estlibcom"
     t.string   "formula"
     t.datetime "created_at"
@@ -251,6 +258,7 @@ ActiveRecord::Schema.define(version: 20150401151125) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "sigesp_fuente_financiamientos", force: true do |t|
     t.string   "codemp"
     t.string   "codfuefin"
@@ -260,6 +268,8 @@ ActiveRecord::Schema.define(version: 20150401151125) do
     t.datetime "updated_at"
   end
 
+=======
+>>>>>>> upstream/master
   create_table "sigesp_marcas", force: true do |t|
     t.integer  "id_marca"
     t.string   "str_idmarca"
@@ -288,9 +298,17 @@ ActiveRecord::Schema.define(version: 20150401151125) do
   end
 
   create_table "sigesp_regions", id: false, force: true do |t|
+<<<<<<< HEAD
     t.integer "seq_region"
     t.string  "str_descripcion"
     t.string  "str_codregion"
+=======
+    t.integer  "seq_region"
+    t.string   "str_descripcion"
+    t.string   "str_codregion"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> upstream/master
   end
 
   create_table "sigesp_sedes", id: false, force: true do |t|
@@ -455,11 +473,52 @@ ActiveRecord::Schema.define(version: 20150401151125) do
   create_table "sigesp_unidads", force: true do |t|
     t.string   "codunimed"
     t.string   "denunimed"
+<<<<<<< HEAD
     t.float    "unidad"
+=======
+    t.integer  "unidad"
+>>>>>>> upstream/master
     t.string   "obsunimed"
     t.string   "tiposep"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "sno_hconceptovacacion", id: false, force: true do |t|
+    t.string "codemp",          limit: 4,  null: false
+    t.string "codnom",          limit: 4,  null: false
+    t.string "anocur",          limit: 4,  null: false
+    t.string "codperi",         limit: 3,  null: false
+    t.string "codconc",         limit: 10, null: false
+    t.text   "forsalvac",                  null: false
+    t.float  "acumaxsalvac",               null: false
+    t.float  "minsalvac",                  null: false
+    t.float  "maxsalvac",                  null: false
+    t.text   "consalvac",                  null: false
+    t.text   "forpatsalvac",               null: false
+    t.float  "minpatsalvac",               null: false
+    t.float  "maxpatsalvac",               null: false
+    t.text   "forreivac",                  null: false
+    t.float  "acumaxreivac",               null: false
+    t.float  "minreivac",                  null: false
+    t.float  "maxreivac",                  null: false
+    t.text   "conreivac",                  null: false
+    t.text   "forpatreivac",               null: false
+    t.float  "minpatreivac",               null: false
+    t.float  "maxpatreivac",               null: false
+    t.float  "acumaxsalvacaux"
+    t.float  "minsalvacaux"
+    t.float  "maxsalvacaux"
+    t.float  "minpatsalvacaux"
+    t.float  "maxpatsalvacaux"
+    t.float  "acumaxreivacaux"
+    t.float  "minreivacaux"
+    t.float  "maxreivacaux"
+    t.float  "minpatreivacaux"
+    t.float  "maxpatreivacaux"
+  end
+
+>>>>>>> upstream/master
 end

@@ -1,0 +1,2 @@
+module Sigesp::SolicitudsalmacensHelper
+end
