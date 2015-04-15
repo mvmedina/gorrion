@@ -2,7 +2,6 @@
   <% if @sigesp_solicitud.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sigesp_solicitud.errors.count, "error") %> prohibited this sigesp_solicitud from being saved:</h2>
-
       <ul>
       <% @sigesp_solicitud.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -49,36 +48,37 @@
        <%= f.text_area :consol, class: "form-control input-sm", rows:"2" %>
     </div>
   </div>
+
+  <label><strong>DETALLE DE LA REQUISICION</strong></label>
+
   <div class="form-group">
-    <div class="col-md-12">
-      <h4 class="page-header">DETALLE DE LA REQUISICION</h4>
+    <div class="col-md-10">
+      <div align="right"> 
+        <button type="button" class="btn btn-primary" id="prueba" data-url="<%= sigesp_tiposArticulos_path %>"data-url-articulo="<%= sigesp_articulos_path %>">
+        <span class="glyphicon glyphicon-plus " aria-hidden="true"></span>
+        </button>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th> Código </th>
+            <th> Item </th> 
+            <th> Cantidad </th>
+            <th> Precio </th>
+            <th> Unidad </th>
+            <th> SubTotal </th>
+            <th></th>
+          </tr>
+        </thead> 
+        <tbody class="detallesolictud">
+        </tbody>
+      </table> 
     </div>
   </div>
 
 
-   <div class=" form-group">
-    <div class="col-md-9">
-  </div>
-    <input type="button" id="prueba" data-url="<%= sigesp_tiposArticulos_path %>" 
-     data-url-articulo="<%= sigesp_articulos_path %>" value="Agregar Item">
-    </input>
-  </div>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th> Código </th>
-        <th> Item </th> 
-        <th> Cantidad </th>
-        <th> Precio </th>
-        <th> Unidad </th>
-        <th> SubTotal </th>
-      </tr>
-    </thead> 
-  </table> 
-  
   <div class=" form-group">
-    <div class="col-md-9">
+    <div class="col-md-7">
     </div>
     <div class="col-md-1">
       <%= f.submit "Guardar" , id: "pp", class: "btn btn-default "  %>
@@ -87,5 +87,5 @@
       <%= f.submit "Cancelar" , id: "pp", class: "btn btn-default "  %>
     </div>
   </div> 
-  
+
 <% end %>

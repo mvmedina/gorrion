@@ -11,7 +11,7 @@
         <%= content_tag :button,'Buscar',class: "btn btn-default buscararticulo", data: { tipoarticulo:@tipo.id } %>
     </div>
   </div>
-  <table class="table">
+  <table class="table productos">
     <thead>
       <tr>
         <th>Codigo</th>
@@ -30,8 +30,8 @@
       <td><%= item.exiart %></td>
       <td><%= item.prearta %></td>
       <td>  
-        <%= content_tag :span ,"",class: "glyphicon glyphicon-ok",
-        data:{ codigo:item.codart,denom:item.denart} %>
+        <%= content_tag :span ,"",class: "glyphicon glyphicon-ok producto",
+        data:{ codigo:item.codart,denom:item.denart,precio:item.prearta,unidad: item.unidad.denunimed} %>
       </td>
 	 	</tr>
 	 <% end %>     

@@ -14,9 +14,7 @@ class Sigesp::SolicitudsController < ApplicationController
 
   # GET /sigesp/solicituds/new
   def new
-    puts 'gogogogog'
-    @sigesp_solicitud = Sigesp::Solicitud.new
-    puts 'gogogogog22'
+    @sigesp_solicitud = Sigesp::Solicitud.new 
   end
 
   # GET /sigesp/solicituds/1/edit
@@ -26,10 +24,19 @@ class Sigesp::SolicitudsController < ApplicationController
   # POST /sigesp/solicituds
   # POST /sigesp/solicituds.json
   def create
-    puts 'gogogogog'
-    puts params
-    @sigesp_solicitud = nil # Sigesp::Solicitud.new(sigesp_solicitud_params)
-    respond_to do |format|
+    puts '*********'
+    detalles = params[:detalle]
+    detalles = JSON.parse(detalles[:articulos]) 
+    detalles.each do |detalle|
+      puts detalle 
+      puts detalle[:id]
+      puts detalle[:precio]
+      puts detalle[:cantidad]
+    end 
+    puts '*********'
+
+#    @sigesp_solicitud = Sigesp::Solicitud.new(sigesp_solicitud_params)
+#    respond_to do |format|
       #if @sigesp_solicitud.save
         format.html { redirect_to @sigesp_solicitud, notice: 'Solicitud was successfully created.' }
       #  format.json { render action: 'show', status: :created, location: @sigesp_solicitud }
@@ -37,7 +44,7 @@ class Sigesp::SolicitudsController < ApplicationController
       #  format.html { render action: 'new' }
       #  format.json { render json: @sigesp_solicitud.errors, status: :unprocessable_entity }
       #end
-    end
+ #   end
   end
 
   # PATCH/PUT /sigesp/solicituds/1
@@ -74,4 +81,9 @@ class Sigesp::SolicitudsController < ApplicationController
     def sigesp_solicitud_params
       params.require(:sigesp_solicitud).permit(:codemp, :numsol, :unidadejecutora, :codtipsol, :coduniadm, :codfuefin, :fecregsol, :estsol, :consol, :tipo, :monto, :monbasinm, :montotcar, :tipo_destino, :cod_pro, :ced_bene, :firnivsol, :firnivadm, :firnivpre, :estapro, :fecaprsep, :codaprusu, :numpolcon, :fechaconta, :fechaanula, :monbasinmaux, :montotcaraux, :montoaux, :undadm, :destino, :cod_servicio, :cod_sede, :cod_region, :str_codregionsedeservicio)
     end
+
+    def sigesp_solicitud_params_detalle
+      params.require(:detalle).permit(:articulos)
+    end
+
 end
