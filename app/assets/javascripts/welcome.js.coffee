@@ -140,3 +140,46 @@ $.rails.showConfirmDialog = (link) ->
     return modal 
 ) jQuery
 
+
+$(document).on 'click','#prueba2', (e) ->
+  alert 'holaaa'
+  #llamar al html y organizar lo demas 
+
+  formulario = {}
+  formulario.sigesp_solicitud = {}
+  formulario.sigesp_solicitud.ced_bene = "holaaaa"
+
+  articulo1 = {}
+  articulo1.id = "12"
+  articulo1.cantidad="12"
+  articulo1.precio="12"
+
+  articulo2 = {}
+  articulo2.id = "12"
+  articulo2.cantidad="12"
+  articulo2.precio="12"
+
+
+  articulo3 = {}
+  articulo3.id = "12"
+  articulo3.cantidad="12"
+  articulo3.precio="12"
+
+  lista = []
+  lista.push articulo1
+  lista.push articulo2
+  lista.push articulo3
+
+  formulario.detalle = {}
+  formulario.detalle.articulos = JSON.stringify(lista)
+
+  data=
+  url: "http://0.0.0.0:3000/sigesp/solicituds.json"
+  type: 'post'
+  data: formulario
+  success: (data) ->
+    alert 'gogogogogogo'
+  $(".erro_campo").remove()
+  $.ajax data
+  e.preventDefault()
+  return

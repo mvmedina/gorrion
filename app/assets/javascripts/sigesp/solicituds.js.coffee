@@ -27,8 +27,6 @@ $(document).on 'change', '#sigesp_solicitud_cod_sede', (e) ->
     $.ajax data
     return
 
-
-
 $(document).on 'change', '#sigesp_solicitud_codfuefin', (e) ->
     #pido la informacion y cargo  municipios
     e.preventDefault()
@@ -54,4 +52,27 @@ $(document).on 'change', '#sigesp_solicitud_codfuefin', (e) ->
     $.ajax data
     return
 
+quitar = () ->
+    $('<td>').append $('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>') 
 
+$(document).on 'click', '.productos .producto', (e) ->
+    #pido la informacion y cargo  municipios
+    e.preventDefault()
+    #cargo el articulo al detalle y le pongo para que agregen la cantidad y el precio 
+    #veo si existe dentro de la lista 
+    if $('#'+$(this).data('codigo').trim()).length == 0
+        #No hay nadie 
+        alert 'Articulo Agregado'
+        tr = $('<tr>',{
+            id:$(this).data('codigo').trim()
+        })
+        
+        tr.append $('<td>').append($(this).data('codigo').trim())
+        tr.append $('<td>').append($(this).data('denom'))
+        tr.append $('<td>0.0</td>')
+        tr.append $('<td>').append($(this).data('precio'))
+        tr.append $('<td>').append($(this).data('unidad'))
+        tr.append $('<td>0.0</td>')
+        tr.append quitar()
+        $('.detallesolictud').append tr
+    return

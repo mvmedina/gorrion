@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  codemp: MyString
-  codfuefin: MyString
-  denfuefin: MyString
-  expfuefin: MyString
+# one:
+#   codemp: MyString
+#   codfuefin: MyString
+#   denfuefin: MyString
+#   expfuefin: MyString
 
-two:
-  codemp: MyString
-  codfuefin: MyString
-  denfuefin: MyString
-  expfuefin: MyString
+# two:
+#   codemp: MyString
+#   codfuefin: MyString
+#   denfuefin: MyString
+#   expfuefin: MyString

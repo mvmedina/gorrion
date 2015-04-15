@@ -67,18 +67,6 @@ ActiveRecord::Schema.define(version: 20150401151125) do
   add_index "administracion_usuarios", ["email"], name: "index_administracion_usuarios_on_email", unique: true, using: :btree
   add_index "administracion_usuarios", ["reset_password_token"], name: "index_administracion_usuarios_on_reset_password_token", unique: true, using: :btree
 
-  create_table "personas", force: true do |t|
-    t.string   "codemp"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "pruebas", force: true do |t|
-    t.date     "fecha"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sigesp_almacens", force: true do |t|
     t.string   "codemp"
     t.string   "codalm"
@@ -152,7 +140,7 @@ ActiveRecord::Schema.define(version: 20150401151125) do
     t.string   "dencar"
     t.string   "codestpro"
     t.string   "spg_cuenta"
-    t.integer  "procar"
+    t.float    "procar"
     t.integer  "estlibcom"
     t.string   "formula"
     t.datetime "created_at"
@@ -192,14 +180,12 @@ ActiveRecord::Schema.define(version: 20150401151125) do
   end
 
   create_table "sigesp_departamentos", id: false, force: true do |t|
-    t.string   "codemp"
-    t.string   "coddep"
-    t.string   "dendep"
-    t.string   "coddepp"
-    t.string   "nivel"
-    t.string   "codperresponsable"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "codemp"
+    t.string "coddep"
+    t.string "dendep"
+    t.string "coddepp"
+    t.string "nivel"
+    t.string "codperresponsable"
   end
 
   create_table "sigesp_dt_articulos", force: true do |t|
@@ -285,12 +271,10 @@ ActiveRecord::Schema.define(version: 20150401151125) do
   end
 
   create_table "sigesp_modelos", force: true do |t|
-    t.integer  "id_modelo"
-    t.string   "str_idmarca"
-    t.string   "str_idmodelo"
-    t.string   "str_descripcion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "id_modelo"
+    t.string  "str_idmarca"
+    t.string  "str_idmodelo"
+    t.string  "str_descripcion"
   end
 
   create_table "sigesp_personas", id: false, force: true do |t|
@@ -303,28 +287,22 @@ ActiveRecord::Schema.define(version: 20150401151125) do
   end
 
   create_table "sigesp_regions", id: false, force: true do |t|
-    t.integer  "seq_region"
-    t.string   "str_descripcion"
-    t.string   "str_codregion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "seq_region"
+    t.string  "str_descripcion"
+    t.string  "str_codregion"
   end
 
   create_table "sigesp_sedes", id: false, force: true do |t|
-    t.integer  "seq_sede"
-    t.string   "str_descripcion"
-    t.string   "str_codsede"
-    t.integer  "int_region"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "seq_sede"
+    t.string  "str_descripcion"
+    t.string  "str_codsede"
+    t.integer "int_region"
   end
 
   create_table "sigesp_servicios", id: false, force: true do |t|
-    t.integer  "seq_servicio"
-    t.string   "str_descripcion"
-    t.string   "str_codservicio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "seq_servicio"
+    t.string  "str_descripcion"
+    t.string  "str_codservicio"
   end
 
   create_table "sigesp_serviciosedes", id: false, force: true do |t|
@@ -476,45 +454,11 @@ ActiveRecord::Schema.define(version: 20150401151125) do
   create_table "sigesp_unidads", force: true do |t|
     t.string   "codunimed"
     t.string   "denunimed"
-    t.integer  "unidad"
+    t.float    "unidad"
     t.string   "obsunimed"
     t.string   "tiposep"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "sno_hconceptovacacion", id: false, force: true do |t|
-    t.string "codemp",          limit: 4,  null: false
-    t.string "codnom",          limit: 4,  null: false
-    t.string "anocur",          limit: 4,  null: false
-    t.string "codperi",         limit: 3,  null: false
-    t.string "codconc",         limit: 10, null: false
-    t.text   "forsalvac",                  null: false
-    t.float  "acumaxsalvac",               null: false
-    t.float  "minsalvac",                  null: false
-    t.float  "maxsalvac",                  null: false
-    t.text   "consalvac",                  null: false
-    t.text   "forpatsalvac",               null: false
-    t.float  "minpatsalvac",               null: false
-    t.float  "maxpatsalvac",               null: false
-    t.text   "forreivac",                  null: false
-    t.float  "acumaxreivac",               null: false
-    t.float  "minreivac",                  null: false
-    t.float  "maxreivac",                  null: false
-    t.text   "conreivac",                  null: false
-    t.text   "forpatreivac",               null: false
-    t.float  "minpatreivac",               null: false
-    t.float  "maxpatreivac",               null: false
-    t.float  "acumaxsalvacaux"
-    t.float  "minsalvacaux"
-    t.float  "maxsalvacaux"
-    t.float  "minpatsalvacaux"
-    t.float  "maxpatsalvacaux"
-    t.float  "acumaxreivacaux"
-    t.float  "minreivacaux"
-    t.float  "maxreivacaux"
-    t.float  "minpatreivacaux"
-    t.float  "maxpatreivacaux"
   end
 
 end
