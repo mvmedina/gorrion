@@ -7,8 +7,7 @@ Gorrion::Application.routes.draw do
 
   devise_for :usuarios, class_name: "Administracion::Usuario"
   namespace :administracion do
-    resources :usuarios do
-        
+    resources :usuarios do        
         get 'permisos', to: 'usuarios#permisos_usuario'
         post 'permiso/:permiso_id/add/', to: 'usuarios#add_permiso_usuario' , as: :permiso_add
         post 'permiso/:permiso_id/del/', to: 'usuarios#del_permiso_usuario', as: :permiso_del 
@@ -22,17 +21,8 @@ Gorrion::Application.routes.draw do
     get 'articulos/', to: 'articulos#index' , as: :articulos
     get 'servicios/', to: 'sede_servicio#index', as: :servicios
     get 'unidadAdministrativas/', to: 'unidad_administrativa#index', as: :unidad_administrativas
-
   end
 
-  
-
-#  scope module :sigesp do
-#      get 'suministros/',to: 'sigesp/tipoarticulo#suministros' 
-#      get 'maquinaria/',to: 'tipoarticulo#maquinaria' 
-#      get 'donaciones/',to: 'tipoarticulo#donaciones'
-#      get 'otros/',to: 'tipoarticulo#otros' 
-#  end
 
   namespace :admin do
      resources :usuarios

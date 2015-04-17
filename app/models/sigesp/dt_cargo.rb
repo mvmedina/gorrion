@@ -2,8 +2,8 @@ class Sigesp::DtCargo < ActiveRecord::Base
 	self.primary_key = 'codemp'
 	self.table_name = 'public.sep_dta_cargos'
 
-	has_many :cargos, class_name: "Sigesp::Cargo", foreign_key:"codemp"
-    has_many :articulos, class_name: "Sigesp::Articulo", foreign_key:"codemp"
+	belongs_to :cargo, class_name: "Sigesp::Cargo", foreign_key:"codcar"
+    belongs_to :articulo, class_name: "Sigesp::Articulo", foreign_key:"codart"
 
 
 	def id 

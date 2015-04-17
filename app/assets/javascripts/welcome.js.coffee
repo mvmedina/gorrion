@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+#### Para poner a los Formularios un mensaje de error 
 (($) ->
   $.fn.campo_error = (mensaje) ->
     @parent().parent().removeClass 'has-error'
@@ -139,6 +139,23 @@ $.rails.showConfirmDialog = (link) ->
     $("body").append modal   
     return modal 
 ) jQuery
+
+
+#### Alerts 
+
+(($) ->
+  $.aplicacion = new Object()
+  $.aplicacion.alerta = (contenedor,mensaje,tipo) ->
+    tipo = "danger" if not tipo? 
+    alerta = $('<div>',{
+      "class":"alert alert-"+tipo
+    }).append $('<label>').append(mensaje)
+    contenedor.append alerta 
+    alerta.hide 8000, (e)->
+      alerta.remove()
+    alerta
+) jQuery
+  
 
 
 $(document).on 'click','#prueba2', (e) ->

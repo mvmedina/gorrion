@@ -61,12 +61,10 @@ $(document).on 'click', '.productos .producto', (e) ->
     #cargo el articulo al detalle y le pongo para que agregen la cantidad y el precio 
     #veo si existe dentro de la lista 
     if $('#'+$(this).data('codigo').trim()).length == 0
-        #No hay nadie 
-        alert 'Articulo Agregado'
+        #No hay nadie   
         tr = $('<tr>',{
             id:$(this).data('codigo').trim()
-        })
-        
+        })        
         tr.append $('<td>').append($(this).data('codigo').trim())
         tr.append $('<td>').append($(this).data('denom'))
         tr.append $('<td>0.0</td>')
@@ -75,4 +73,9 @@ $(document).on 'click', '.productos .producto', (e) ->
         tr.append $('<td>0.0</td>')
         tr.append quitar()
         $('.detallesolictud').append tr
+        $('.alert_productos').empty()
+        $.aplicacion.alerta($('.alert_productos')," Articulo "+$(this).data('codigo').trim()+" agregado ","success")
+    else
+        $('.alert_productos').empty()
+        $.aplicacion.alerta($('.alert_productos')," Ya ah sido agregado")
     return

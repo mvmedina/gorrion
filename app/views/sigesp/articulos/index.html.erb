@@ -1,6 +1,7 @@
 <div class="table-responsive">
   <div class ="row buscar">
-    <div class="col-md-6"></div> 
+    <div class="col-md-6">
+    </div> 
     <div class="col-md-3">  
      <%= text_field_tag :search,params[:search],class: "form-control" %>  
     </div>
@@ -31,7 +32,8 @@
       <td><%= item.prearta %></td>
       <td>  
         <%= content_tag :span ,"",class: "glyphicon glyphicon-ok producto",
-        data:{ codigo:item.codart,denom:item.denart,precio:item.prearta,unidad: item.unidad.denunimed} %>
+        data:{ codigo:item.codart,denom:item.denart,precio:item.prearta,unidad: item.unidad.denunimed,
+          cargo:item.cargo_activo } %>
       </td>
 	 	</tr>
 	 <% end %>     
@@ -39,9 +41,18 @@
   </table>
 </div> 
 
-<div align="right" class="catalagoArticulo" data-url="<%=  sigesp_articulos_path  %>">
-  <%= will_paginate @lista, renderer: BootstrapPagination::Rails %> 
+<div class="row">
+  <div class="col-md-4">
+    <label><%= page_entries_info @lista %></label>
+  </div>
+  <div class="col-md-8 catalagoArticulo" 
+          data-url="<%=  sigesp_articulos_path  %>">
+    <%= will_paginate @lista, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>
-<label><%= page_entries_info @lista %></label>
+
+<div class="alert_productos">
+ 
+</div>
 
  
