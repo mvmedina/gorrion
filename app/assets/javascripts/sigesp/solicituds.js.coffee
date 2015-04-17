@@ -52,27 +52,88 @@ $(document).on 'change', '#sigesp_solicitud_codfuefin', (e) ->
     $.ajax data
     return
 
-quitar = () ->
-    $('<td>').append $('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>') 
+quitar= (fila)->
+  #crear el imagen 
+  imagen = $('<span>',{
+    "class":"glyphicon glyphicon-minus",
+    "aria-hidden":"true"
+    })
+  imagen.on "click",(e)->
+    fila.remove() 
+  $('<td>').append imagen 
+
+cantidad= (cantidad)->
+  #crear el componente
+  canti = $('<input>',{
+    "class":"cantidad",
+    "type":"number",
+    "min":"1",
+    "style":"width:50px"
+    "value":cantidad
+    })
+  canti
+
+precio= (precio)->
+  #crear el componente
+  preci = $('<input>',{
+    "class":"precio",
+    "type":"number",
+    "step":"any"
+    "min":"0",
+    "style":"width:50px"
+    "value":precio
+    })
+  preci
+
+subtotal =(cantidad,precio)->
+  subt = $('<td>',{"class": "subtotal"}).append(cantidad.val()*precio.val())
+  #calculo la suma de los subtotales 
+  cantidad.on "keyup",(e)-> 
+    subt.empty()
+    subt.append(cantidad.val()*precio.val())
+    sumar_subtotal()
+  precio.on "keyup", (e)->
+    subt.empty()
+    subt.append(cantidad.val()*precio.val())
+    sumar_subtotal()
+  return subt
+
+sumar_subtotal = ()->
+  suma = 0;
+  $('.detallesolictud .subtotal').each (index)->
+    suma.empty() 
+    suma += parseInt($(this).text())
+    suma
+
+  #$('.formulario_solcitud .total').append(suma.toString() + " Bs.")
+
+#calcular_totales =()->
+  #voy de fila en fila calculando todo bien bonito :-D
+
+$('.detallesolictud .total').each (index)->
+  tot = $('<td>',{"class": "total"}).append( index + ": " + $( this ).text())
+  return tot
 
 $(document).on 'click', '.productos .producto', (e) ->
-    #pido la informacion y cargo  municipios
-    e.preventDefault()
-    #cargo el articulo al detalle y le pongo para que agregen la cantidad y el precio 
-    #veo si existe dentro de la lista 
-    if $('#'+$(this).data('codigo').trim()).length == 0
-        #No hay nadie 
-        alert 'Articulo Agregado'
-        tr = $('<tr>',{
-            id:$(this).data('codigo').trim()
-        })
-        
-        tr.append $('<td>').append($(this).data('codigo').trim())
-        tr.append $('<td>').append($(this).data('denom'))
-        tr.append $('<td>0.0</td>')
-        tr.append $('<td>').append($(this).data('precio'))
-        tr.append $('<td>').append($(this).data('unidad'))
-        tr.append $('<td>0.0</td>')
-        tr.append quitar()
-        $('.detallesolictud').append tr
-    return
+  #pido la informacion y cargo  municipios
+  e.preventDefault()
+  #cargo el articulo al detalle y le pongo para que agregen la cantidad y el precio 
+  #veo si existe dentro de la lista 
+  if $('#'+$(this).data('codigo').trim()).length == 0
+    #No hay nadie 
+    tr = $('<tr>',{
+      id:$(this).data('codigo').trim()
+    })  
+    cant = cantidad(0)
+    prec = precio($(this).data('precio'))
+    tr.append $('<td>').append($(this).data('codigo').trim())
+    tr.append $('<td>').append($(this).data('denom'))
+    tr.append $('<td>').append(cant)
+    tr.append $('<td>').append(prec)
+    tr.append $('<td>').append($(this).data('unidad'))
+    tr.append $(subtotal(cant,prec))
+    tr.append quitar(tr) 
+    $('.detallesolictud').append tr
+    sumar_subtotal()
+    alert 'Articulo Agregado'
+  return
