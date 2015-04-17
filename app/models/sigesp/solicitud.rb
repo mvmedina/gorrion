@@ -11,6 +11,10 @@ class Sigesp::Solicitud < ActiveRecord::Base
     belongs_to :unidadAdministrativa, foreign_key: "coduniadm", class_name: "Sigesp::UnidadAdministrativa"
     belongs_to :tipoSolicitud, foreign_key: "codtipsol", class_name: "Sigesp::TipoSolicitud"
 
+    belongs_to :sede , foreign_key: "cod_sede", class_name: "Sigesp::Sede"
+    belongs_to :servicio, foreign_key:"cod_servicio", class_name: "Sigesp::Servicio"
+
+    belongs_to :fuenteFinanciamiento,foreign_key:"codfuefin", class_name: "Sigesp::FuenteFinanciamiento"
 
 	def id 
 		sync_with_transaction_state
@@ -18,16 +22,29 @@ class Sigesp::Solicitud < ActiveRecord::Base
 	end
 
 
-  def self.search(page = 1 , search , sort)
+  def self.search_compra(page = 1 , search , sort)
     search ||= ""
     sort ||= "" 
-
+    join =" INNER JOIN sigesp_espc.sep_solicitud_tipo ON sigesp_espc.sep_solicitud_tipo.numsol = public.sep_solicitud.numsol" 
     if search.empty? 
-      paginate(page: page).order(sort) rescue paginate(page: 1) 
+      joins(join).paginate(page: page).where("sigesp_espc.sep_solicitud_tipo.bol_compra = true ").order(sort) #rescue paginate(page: 1) 
     else
       paginate(page: page).where("#{sort} like ?","%#{search}%").order("#{sort} asc")
     end 
   end 
+
+  def self.search_almacen(page = 1 , search , sort)
+    search ||= ""
+    sort ||= "" 
+    join =" INNER JOIN sigesp_espc.sep_solicitud_tipo ON sigesp_espc.sep_solicitud_tipo.numsol = public.sep_solicitud.numsol" 
+    if search.empty? 
+      joins(join).paginate(page: page).where("sigesp_espc.sep_solicitud_tipo.bol_compra = false ").order(sort) #rescue paginate(page: 1) 
+    else
+      paginate(page: page).where("#{sort} like ?","%#{search}%").order("#{sort} asc")
+    end 
+  end 
+
+
 
    self.per_page = 10 
 

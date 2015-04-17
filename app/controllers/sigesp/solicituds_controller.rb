@@ -4,7 +4,7 @@ class Sigesp::SolicitudsController < ApplicationController
   # GET /sigesp/solicituds
   # GET /sigesp/solicituds.json
   def index
-    @sigesp_solicituds = Sigesp::Solicitud.search params[:page], params[:search], params[:sort]
+    @sigesp_solicituds = Sigesp::Solicitud.search_compra params[:page], params[:search], params[:sort]
   end
 
   # GET /sigesp/solicituds/1

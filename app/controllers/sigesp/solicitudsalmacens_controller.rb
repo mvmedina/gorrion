@@ -4,7 +4,7 @@ class Sigesp::SolicitudsalmacensController < ApplicationController
   # GET /sigesp/solicituds
   # GET /sigesp/solicituds.json
   def index
-    @sigesp_solicituds = Sigesp::Solicitud.all
+    @sigesp_solicituds = Sigesp::Solicitud.search_almacen params[:page], params[:search], params[:sort]
   end
 
   # GET /sigesp/solicituds/1

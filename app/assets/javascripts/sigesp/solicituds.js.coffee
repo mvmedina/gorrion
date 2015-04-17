@@ -115,6 +115,7 @@ $('.detallesolictud .total').each (index)->
   return tot
 
 $(document).on 'click', '.productos .producto', (e) ->
+
   #pido la informacion y cargo  municipios
   e.preventDefault()
   #cargo el articulo al detalle y le pongo para que agregen la cantidad y el precio 
@@ -136,4 +137,10 @@ $(document).on 'click', '.productos .producto', (e) ->
     $('.detallesolictud').append tr
     sumar_subtotal()
     alert 'Articulo Agregado'
-  return
+    $('.alert_productos').empty()
+        $.aplicacion.alerta($('.alert_productos')," Articulo "+$(this).data('codigo').trim()+" agregado ","success")
+    else
+        $('.alert_productos').empty()
+        $.aplicacion.alerta($('.alert_productos')," Ya ah sido agregado")
+    return
+

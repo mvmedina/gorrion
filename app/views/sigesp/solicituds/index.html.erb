@@ -10,20 +10,21 @@
 <div class="row buscar" >
     <div class="col-md-6"></div>
     <div class="col-md-6" align="rigth">
-    <div class="input-group">  
+    <div class="col-md-6">  
        <%= text_field_tag :search,params[:search],class: "form-control" %>  
-      <div class="input-group-btn">
+    </div>
+    <div class="col-md-3">
        <%= select_tag :sort,options_for_select(["numero solicitud","descripcion","concepto","tipo","fecha","estado"]), class: "form-control",selected:params[:sort]%>
+    </div>
+    <div class="col-md-3">
        <%= content_tag :button,'Buscar',class: "btn btn-default buscararticulo" %>
       </div>
-    </div><!-- /input-group -->
     </div> 
   </div>
 
   <table class="table">
   <thead>
     <tr>
-    
       <th>Nro</th>
       <th>Unidad Ejecutora</th> 
       <th>Concepto</th> 
@@ -35,19 +36,24 @@
       <th></th>
     </tr>
   </thead>
-
+ 
   <tbody>
     <% @sigesp_solicituds.each do |sigesp_solicitud| %>
       <tr>
          <td><%= sigesp_solicitud.numsol %></td>
          <td><%= sigesp_solicitud.unidadAdministrativa.denuniadm  %></td>
-         <td><%= sigesp_solicitud.consol %></td>
+         <td><%= truncate(sigesp_solicitud.consol,length: 75) %></td>
          <td><%= tipoSolicitud(sigesp_solicitud.tipoSolicitud.dentipsol) %></td>
          <td><%= sigesp_solicitud.fecregsol %></td>
          <td><%= estadoSolicitud(sigesp_solicitud.estsol) %></td>
-         <td><%= link_to 'Show', sigesp_solicitud %></td>
-         <td><%= link_to 'Edit', edit_sigesp_solicitud_path(sigesp_solicitud) %></td>
-         <td><%= link_to 'Destroy', sigesp_solicitud, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td><%= link_to sigesp_solicitud do |link| %>
+            <span data-toggle="tooltip" data-placement="left" title="" class="glyphicon glyphicon-zoom-in" title="Mostrar"></span>
+        <% end %>
+        </td>
+         <td><%= link_to sigesp_solicitud, method: :delete, data: { confirm: 'Quieres Anular Esta Solicitud  ?' } do |link| %>
+            <span data-toggle="tooltip" data-placement="left" title="Eliminar" class="glyphicon glyphicon-remove"></span>
+          <% end %>
+         </td>
       </tr>
     <% end %>
   </tbody>
